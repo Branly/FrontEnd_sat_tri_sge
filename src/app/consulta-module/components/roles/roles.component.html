@@ -1,0 +1,107 @@
+<div class="py-2 py-sm-3 py-md-4 py-lg-5 px-2 px-sm-3 px-md-4 px-lg-5" @enterExitBottom>
+  <mat-card class="pt-3 pb-2">
+    <mat-card-title class="main-title text-sat">Consulta de Roles</mat-card-title>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-5">
+        <div class="row">
+          <mat-form-field appearance="standard" class="col-9 mb-2">
+            <mat-label>Usuario</mat-label>
+            <input #id matInput (keypress)="validateEnter($event, id.value)">
+            <mat-hint>Puede ingresar NIT ó login</mat-hint>
+          </mat-form-field>
+          <button mat-button type="button" color="primary" class="btn-container col mt-3 justify-content-center"
+            (click)="findInfo(id.value)" [disabled]="!id.value">
+            <mat-icon>search</mat-icon>
+            Consultar
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <ng-container *ngIf="!found && searched">
+    <mat-card class="mt-3" @enterExitBottom>
+      <mat-card-title class="main-title">
+        No se encontró información del usuario ingresado.
+      </mat-card-title>
+    </mat-card>
+  </ng-container>
+  <ng-container *ngIf="found && searched">
+    <div *ngIf="user" @enterExitBottom>
+      <mat-card class="pt-3 pb-3 mt-3">
+        <div class="row">
+          <img [src]="getImageUrl()" alt="{{user.name}}" class="col-sm-2 ms-lg-2 ms-md-2 ms-sm-3 ms-3 p-0"
+            style="max-width: 80px; max-height: 80px; border-radius: 14px;" onerror="this.src = 'assets/img/user.svg'">
+          <div class="col-sm-6 pt-3">
+            <mat-card-title class="main-title">{{user.name}}</mat-card-title>
+            <p class="login">{{user.user}}</p>
+          </div>
+          <div class="col">
+            <p class="date mt-0 mt-sm-0 mt-md-4 mt-lg-4 text-start text-sm-start text-md-end text-lg-end">
+              {{date | date: "EEEE, dd 'de' MMMM 'de' YYYY, HH:mm"}}</p>
+          </div>
+        </div>
+      </mat-card>
+      <div class="row mt-1 pt-3">
+        <div class="col-sm-4 p-3">
+          <mat-card class="parent">
+            <div class="child">
+              <mat-icon>person_outline</mat-icon>
+            </div>
+            <p class="title m-2 mt-3">NIT</p>
+            <p class="text mx-2">{{user.nit}}</p>
+          </mat-card>
+        </div>
+        <div class="col-sm-4 p-3">
+          <mat-card class="parent">
+            <div class="child">
+              <mat-icon>work_outline</mat-icon>
+            </div>
+            <p class="title m-2 mt-3">Puesto</p>
+            <p class="text mx-2">{{user.job}}</p>
+          </mat-card>
+        </div>
+        <div class="col-sm-4 p-3">
+          <mat-card class="parent">
+            <div class="child">
+              <mat-icon>domain</mat-icon>
+            </div>
+            <p class="title m-2 mt-3">Unidad Administrativa</p>
+            <p class="text mx-2">{{user.unit}}</p>
+          </mat-card>
+        </div>
+      </div>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-card-title class="card-title">OID</mat-card-title>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <roles-table [type]="'OID'" [login]="user.user"></roles-table>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-card-title class="card-title">Active Directory</mat-card-title>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <roles-table [type]="'AD'" [login]="user.user"></roles-table>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-card-title class="card-title">Base de Datos</mat-card-title>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <roles-table [type]="'DB'" [login]="user.user"></roles-table>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </ng-container>
+</div>
