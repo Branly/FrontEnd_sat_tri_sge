@@ -1,3 +1,5 @@
+import { SidebarOption } from "./sidebar-option.interface";
+
 export interface UserLogged {
 	ip: string;
 	loggedSince: string;
@@ -7,6 +9,7 @@ export interface UserLogged {
 	adminUnit: string;
 	name: string;
 	roles: string[];
+	options: SidebarOption[];
 }
 
 export interface UserRole {
