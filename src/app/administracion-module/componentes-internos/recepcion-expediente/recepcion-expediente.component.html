@@ -4,7 +4,7 @@
       <mat-card>
           
           <ng-container>
-              <table mat-table>
+              <table mat-table >
                   <!-- Name Column -->
                   <ng-container matColumnDef="NoExpediente">
                       <th mat-header-cellmatHeaderCellDef> No. Expediente </th>
@@ -34,7 +34,28 @@
                 <ng-container matColumnDef="folios">
                     <th mat-header-cellmatHeaderCellDef> Folios </th>
                     <td mat-cell matCellDef="let element"> </td>
-                </ng-container>                                
+                </ng-container>       
+                <ng-container matColumnDef="observaciones">
+                    <th mat-header-cellmatHeaderCellDef> Observaciones </th>
+                    <td mat-cell matCellDef="let element"> </td>
+                </ng-container>       
+                <ng-container matColumnDef="noexpedientetributa">
+                    <th mat-header-cellmatHeaderCellDef> No. Expediente Tributa </th>
+                    <td mat-cell matCellDef="let element"> </td>
+                </ng-container>       
+                <ng-container matColumnDef="resolucion">
+                    <th mat-header-cellmatHeaderCellDef> Recurso(Resolución) </th>
+                    <td mat-cell matCellDef="let element"> </td>
+                </ng-container>       
+                <ng-container matColumnDef="direccionfiscal">
+                    <th mat-header-cellmatHeaderCellDef> Dirección Fiscal </th>
+                    <td mat-cell matCellDef="let element"> </td>
+                </ng-container>               
+                <ng-container matColumnDef="cantidadajustes">
+                    <th mat-header-cellmatHeaderCellDef> Cantidad Ajustes
+                         </th>
+                    <td mat-cell matCellDef="let element"> </td>
+                </ng-container>                                                                                                            
                   <tr mat-header-rowmatHeaderRowDef="displayedColumns"></tr>
                   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>

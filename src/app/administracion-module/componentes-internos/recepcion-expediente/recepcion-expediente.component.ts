@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-recepcion-expediente',
@@ -10,7 +8,10 @@ import { MatTableDataSource } from '@angular/material/table';
 
 export class RecepcionExpedienteComponent implements OnInit {
 
-  displayedColumns: string[] = ['noexpendiente', 'descripcion', 'nombrecontribuyente', 'nit', 'fechatributa' ];
+  displayedColumns: string[] = [
+    'noexpendiente', 'descripcion', 'nombrecontribuyente', 'nit', 'fechatributa', 'gerenciaorigen', 
+    'folios', 'observaciones', 'noexpedientetributa', 'resolucion', 'direccionfiscal', 'cantidadajustes' 
+  ];
   mostrarTablaPadre = true;
 
 

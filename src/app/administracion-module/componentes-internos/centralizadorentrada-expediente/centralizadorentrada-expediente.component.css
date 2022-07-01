@@ -1,0 +1,9 @@
+.centrar{
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+  }
+
+  table {
+    width: 100%;
+  }

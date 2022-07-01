@@ -1,3 +1,4 @@
+import { CentralizadorentradaExpedienteComponent } from './componentes-internos/centralizadorentrada-expediente/centralizadorentrada-expediente.component';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthorizationGuard } from "../general-module/seguridad/guards/authorization.guard";
@@ -9,6 +10,7 @@ const routes: Routes = [
         children:
         [
             { path: 'recepcion', component: RecepcionExpedienteComponent },
+            { path: 'centralizadorentrada', component: CentralizadorentradaExpedienteComponent },
         ]
     },
 ];
