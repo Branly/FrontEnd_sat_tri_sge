@@ -1,0 +1,88 @@
+<div class="my-2 my-sm-3 my-md-4 my-lg-5 mx-2 mx-sm-3 mx-md-4 mx-lg-5">
+  <mat-card-title class="mt-2 main-title">Reporte de Presidente Tributario</mat-card-title>
+  <div><br>
+  <mat-card>
+      <ng-container>
+
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+              <ng-container matColumnDef="noexpediente">
+                  <th mat-header-cell *matHeaderCellDef> No. Expediente </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.no_Expediente }}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="tiporecurso">
+                  <th mat-header-cell *matHeaderCellDef> Tipo de Recurso </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.tipo_Recurso }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nit">
+                  <th mat-header-cell *matHeaderCellDef> NIT </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.nit_contribuyente }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nombrecontribuyente">
+                  <th mat-header-cell *matHeaderCellDef> Nombre Contribuyente </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.nombre }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="fechatributa">
+                  <th mat-header-cell *matHeaderCellDef> Fecha Ingreso </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.fecha_ingreso | date: 'dd/MM/yyyy' }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="gerenciaorigen">
+                  <th mat-header-cell *matHeaderCellDef> Gerencia Origen </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.gerencia_Origen }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="resolucion">
+                  <th mat-header-cell *matHeaderCellDef> Resolucion </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.recurso }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="monto">
+                  <th mat-header-cell *matHeaderCellDef> Monto </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.monto }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="fechainterposicion">
+                  <th mat-header-cell *matHeaderCellDef> Fecha Interposicion </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.fecha_interposicion }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="tiempopreincripcion">
+                  <th mat-header-cell *matHeaderCellDef> Tiempo Preinscripcion </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.fecha_preincripcion }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let element"> {{ element.estado }} </td>
+              </ng-container>
+
+            <ng-container matColumnDef="profecional">
+              <th mat-header-cell *matHeaderCellDef> Profecional </th>
+              <td mat-cell *matCellDef="let element"> {{ element.profesional }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="especialista">
+              <th mat-header-cell *matHeaderCellDef> Especialista </th>
+              <td mat-cell *matCellDef="let element"> {{ element.especialista }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="agenda">
+              <th mat-header-cell *matHeaderCellDef> Agenda </th>
+              <td mat-cell *matCellDef="let element"> {{ element.id_agenda }} </td>
+            </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator #MatPaginator1="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          aria-label="Select page of periodic elements">
+          </mat-paginator>
+      </ng-container>
+  </mat-card>
+  </div>
+</div>
