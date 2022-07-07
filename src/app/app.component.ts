@@ -12,7 +12,22 @@ export class AppComponent implements AfterViewInit, AfterContentChecked {
   hasImg = false;
   expanded = false;
   user!: UserLogged;
-  options: SidebarOption[] = [];
+  options: SidebarOption[] = [
+    {id: 'AM00', title: 'Administracion', icon: 'settings', children: [
+      {
+        id: 'AM01',
+        title :  'recepcion',
+        icon: "recent_actors",
+        route: 'administracion/recepcion'
+      },    
+      {
+        id: 'AM02',
+        title: 'centralizadorentrada',
+        icon: "personal_injury",
+        route: 'administracion/centralizadorentrada'
+      }
+    ]}
+  ];
 
   constructor(
     private router: Router
@@ -56,7 +71,7 @@ export class AppComponent implements AfterViewInit, AfterContentChecked {
     this.expanded = !this.expanded;
   }
 
-  activeItem(id: string) {
+  activateItem(id: string) {
     const element = document.getElementById(id) as HTMLDivElement;
     const child = element.children[1] as HTMLDataElement;
 

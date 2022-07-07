@@ -46,11 +46,11 @@
     <mat-nav-list>
       <div [id]="item.id" class="item-container" *ngFor="let item of options; trackBy: value">
         <mat-list-item matRipple [matRippleColor]="'#19AFE140'" [disableRipple]="true" [matRippleCentered]="true"
-          class="item">
+          class="item" (click)="activateItem(item.id)">
           <div class="indicator"></div>
           <mat-icon class="item-icon">{{item.icon}}</mat-icon>
           <span>{{item.title}}</span>
-          <mat-icon class="item-action" *ngIf="item.children">navigate_next</mat-icon>
+          <mat-icon class="item-action" (click)="activateItem(item.id)" *ngIf="item.children">navigate_next</mat-icon>
         </mat-list-item>
         <div class="expandable" *ngIf="item.children">
           <mat-list-item matRipple [matRippleColor]="'#19AFE140'" [disableRipple]="true" [matRippleCentered]="true"
