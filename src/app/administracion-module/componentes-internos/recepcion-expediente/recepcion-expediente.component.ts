@@ -51,8 +51,8 @@ export class RecepcionExpedienteComponent implements OnInit {
 
   newLoan(): void {
     const dialogRef = this.dialog.open(PrestamoExpedienteComponent, {
-      width: '500px',
-      height: '600px',
+      width: '300px',
+      disableClose: true,
       data: { usuario: this.usuario,
               gerencia: this.gerencia,
               departamento: this.departamento,
@@ -63,8 +63,9 @@ export class RecepcionExpedienteComponent implements OnInit {
 
   newFile(): void {
     const dialogRef = this.dialog.open(CrearExpedienteComponent, {
-      width: '500px',
-      height: '600px',
+      width: '50%',
+      height: '70%',
+      disableClose: true,
       data: {noExpediente: this.noExpediente,
              tipoRecurso: this.tipoRecurso,
              nombre: this.nombre,

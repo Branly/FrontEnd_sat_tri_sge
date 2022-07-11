@@ -6,16 +6,12 @@ export interface Data {
   gerencia: string;
   departamento: string;
   comentarios: string;
-  noExpediente: string;
-  tipoRecurso: number;
-  nombre: string;
-  nit: string;
-  fechaIngreso: Date;
-  gerenciaOrigen: string;
-  folios: number;
-  resolucion: string;
-  direccion: string;
-  ajustes: number;
+  noExpedienteTributa: string;
+}
+
+interface Infrmation{
+  value: number;
+  name: string;
 }
 
 @Component({
@@ -25,9 +21,15 @@ export interface Data {
 })
 export class PrestamoExpedienteComponent implements OnInit {
 
+  gerencias: Infrmation[] = [
+
+  ];
+
   constructor(public dialogRef: MatDialogRef<PrestamoExpedienteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Data,
   ) { }
+
+
 
      onNoClick(): void {
     this.dialogRef.close();

@@ -6,10 +6,6 @@
             <mat-icon>add</mat-icon>
             Agregar Expediente
         </button>
-        <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="newLoan()">
-          <mat-icon>add</mat-icon>
-          Agregar Prestamo
-      </button>
         <ng-container>
 
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -81,7 +77,7 @@
                         <mat-icon>more_horiz</mat-icon>
                       </button>
                       <mat-menu #menu="matMenu">
-                        <button mat-menu-item type="button" title="request" color="primary">
+                        <button mat-menu-item type="button" title="request" color="primary"  (click)="newLoan()">
                           <mat-icon class="iconos">request</mat-icon>
                           <span>Solicitud de Préstamo</span>
                         </button>

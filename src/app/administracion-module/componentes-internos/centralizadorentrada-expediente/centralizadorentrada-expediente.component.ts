@@ -1,3 +1,4 @@
+import { CentralizadorService } from './../../../general-module/components/servicios/centralizador-service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -11,19 +12,28 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class CentralizadorentradaExpedienteComponent implements OnInit {
 
   displayedColumns: string[] = [
-    'noexpediente', 'tiporecurso', 'nombrecontribuyente', 'nit', 'fechatributa', 'gerenciaorigen', 'folios', 'observaciones', 
-    'noexpedientetributa', 'resolucion', 'direccionfiscal', 'cantidadajustes'
+    'nombrecontribuyente', 'nit', 'fechatributa', 'noexpedientetributa',
+    'fechapreinscripcion', 'estado', 'profecional','acciones'
   ];
   dataSource = new MatTableDataSource();
   mostrarTablaPadre = true;
 
   @ViewChild('MatPaginator1') set matPaginator(mp1: MatPaginator) {
     this.dataSource.paginator = mp1;
-  }  
+  }
 
-  constructor() { }
+  constructor(private CentralizadorService: CentralizadorService) { }
 
   ngOnInit(): void {
+    this.Expedient();
+  }
+
+  Expedient(){
+    this.CentralizadorService.getExpendient().toPromise().then(res => {
+      console.log(res);
+      this.dataSource.data = res;
+
+    })
   }
 
 }

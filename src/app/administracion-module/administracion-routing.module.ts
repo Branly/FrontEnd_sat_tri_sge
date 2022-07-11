@@ -1,3 +1,4 @@
+import { SecretarioAgendaComponent } from './componentes-internos/secretario-agenda/secretario-agenda.component';
 import { CoordinadorExpedienteComponent } from './componentes-internos/coordinador-expediente/coordinador-expediente.component';
 import { ProfesionalExpedienteComponent } from './componentes-internos/profesional-expediente/profesional-expediente.component';
 import { CentralizadorentradaExpedienteComponent } from './componentes-internos/centralizadorentrada-expediente/centralizadorentrada-expediente.component';
@@ -13,10 +14,11 @@ const routes: Routes = [
         children:
         [
             { path: 'recepcion', component: RecepcionExpedienteComponent },
-            { path: 'centralizadorentrada', component: CentralizadorentradaExpedienteComponent },
+            {path: 'centralizadorentrada', component: CentralizadorentradaExpedienteComponent },
             {path: 'presidente', component: PresidenteExpedienteComponent},
             {path: 'profesional', component: ProfesionalExpedienteComponent},
-            {path: 'coordinador', component: CoordinadorExpedienteComponent}
+            {path: 'coordinador', component: CoordinadorExpedienteComponent},
+            {path: 'secretario', component: SecretarioAgendaComponent}
         ]
     },
 ];
