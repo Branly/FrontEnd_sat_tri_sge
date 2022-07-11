@@ -1,0 +1,66 @@
+<h1 mat-dialog-title> Nuevo Expediente{{data.noExpediente}}</h1>
+<div mat-dialog-content>
+  <p>No. Expediente</p>
+  <mat-form-field appearance="fill">
+    <mat-label>No Expediente</mat-label>
+    <input matInput [(ngModel)]="data.noExpediente">
+  </mat-form-field>
+
+ <br>
+
+ <p>Tipo de Recurso</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Tipo de Recurso</mat-label>
+    <mat-select [(ngModel)]="data.tipoRecurso" name="fill">
+      <mat-option *ngFor="let recurso of recursos" [value]="recurso.value">
+        {{recurso.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <p>Nombre del Contribuyente</p>
+  <mat-form-field appearance="fill">
+    <mat-label>nombre</mat-label>
+    <input matInput [(ngModel)]="data.nombre">
+  </mat-form-field>
+
+  <p>NIT del Contribuyente</p>
+  <mat-form-field appearance="fill">
+    <mat-label>nit</mat-label>
+    <input matInput [(ngModel)]="data.nit">
+  </mat-form-field>
+
+  <p>Gerencia Origen</p>
+  <mat-form-field appearance="fill">
+    <mat-label>gerencia</mat-label>
+    <input matInput [(ngModel)]="data.gerenciaOrigen">
+  </mat-form-field>
+
+  <p>Folios</p>
+  <mat-form-field appearance="fill">
+    <mat-label>folios</mat-label>
+    <input matInput [(ngModel)]="data.folios">
+  </mat-form-field>
+
+  <p>Resolucion</p>
+  <mat-form-field appearance="fill">
+    <mat-label>resolucion</mat-label>
+    <input matInput [(ngModel)]="data.resolucion">
+  </mat-form-field>
+
+  <p>Direccion</p>
+  <mat-form-field appearance="fill">
+    <mat-label>direccion</mat-label>
+    <input matInput [(ngModel)]="data.direccion">
+  </mat-form-field>
+
+  <p>Ajuses</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Ajustes</mat-label>
+    <input matInput [(ngModel)]="data.ajustes">
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="data.noExpediente" cdkFocusInitial>Guardar</button>
+  </div>

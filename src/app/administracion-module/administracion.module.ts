@@ -7,6 +7,9 @@ import { RecepcionExpedienteComponent } from "./componentes-internos/recepcion-e
 import { CentralizadorentradaExpedienteComponent } from './componentes-internos/centralizadorentrada-expediente/centralizadorentrada-expediente.component';
 import { PresidenteExpedienteComponent } from './componentes-internos/presidente-expediente/presidente-expediente.component';
 import { ProfesionalExpedienteComponent } from './componentes-internos/profesional-expediente/profesional-expediente.component';
+import { CoordinadorExpedienteComponent } from './componentes-internos/coordinador-expediente/coordinador-expediente.component';
+import { CrearExpedienteComponent } from './componentes-internos/crear-expediente/crear-expediente.component';
+import { PrestamoExpedienteComponent } from './componentes-internos/prestamo-expediente/prestamo-expediente.component';
 
 
 @NgModule({
@@ -15,6 +18,9 @@ import { ProfesionalExpedienteComponent } from './componentes-internos/profesion
         CentralizadorentradaExpedienteComponent,
         PresidenteExpedienteComponent,
         ProfesionalExpedienteComponent,
+        CoordinadorExpedienteComponent,
+        CrearExpedienteComponent,
+        PrestamoExpedienteComponent,
     ],
     imports: [
         CommonModule,
