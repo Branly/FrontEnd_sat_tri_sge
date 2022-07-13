@@ -1,69 +1,276 @@
 <div class="my-2 my-sm-3 my-md-4 my-lg-5 mx-2 mx-sm-3 mx-md-4 mx-lg-5">
-  <mat-card-title class="mt-2 main-title">Centralizador de Entrada</mat-card-title>
-  <div><br>
-      <mat-card>
+  <mat-card-title class="main-title">Centralizador de Entrada</mat-card-title>
 
-          <ng-container>
-              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                  <!-- Name Column -->
-                  <ng-container matColumnDef="nombrecontribuyente">
-                      <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                      <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
-                  </ng-container>
-                  <!-- Weight Column -->
-                  <ng-container matColumnDef="nit">
-                      <th mat-header-cell *matHeaderCellDef> NIT </th>
-                      <td mat-cell *matCellDef="let element">{{element.nit_contribuyente}} </td>
-                  </ng-container>
-
-                  <ng-container matColumnDef="fechatributa">
-                    <th mat-header-cell *matHeaderCellDef> Fecha Ingreso </th>
-                    <td mat-cell *matCellDef="let element">{{element.fecha_ingreso}} </td>
-                  </ng-container>
-
-                  <ng-container matColumnDef="noexpedientetributa">
-                    <th mat-header-cell *matHeaderCellDef> No Expediente Tributa </th>
-                    <td mat-cell *matCellDef="let element"> {{element.no_expediente_tributa}}</td>
-                  </ng-container>
-
-                  <ng-container matColumnDef="fechapreinscripcion">
-                    <th mat-header-cell *matHeaderCellDef> Fecha de Preinscripcion </th>
-                    <td mat-cell *matCellDef="let element">{{element.fecha_preincripcion}} </td>
-                  </ng-container>
-
-                  <ng-container matColumnDef="estado">
-                    <th mat-header-cell *matHeaderCellDef> Estado </th>
-                    <td mat-cell *matCellDef="let element">{{element.estado}} </td>
-                  </ng-container>
-
-                  <ng-container matColumnDef="profecional">
-                    <th mat-header-cell *matHeaderCellDef> Profesional </th>
-                    <td mat-cell *matCellDef="let element"> {{element.profesional}} </td>
-                  </ng-container>
-
-                  <ng-container matColumnDef="acciones">
-                    <th mat-header-cell *matHeaderCellDef class="header-table"></th>
-                    <td mat-cell class="centrar" *matCellDef="let element">
-                      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Acciones">
-                        <mat-icon>more_horiz</mat-icon>
-                      </button>
-                      <mat-menu #menu="matMenu">
-                        <button mat-menu-item type="button" title="request" color="primary">
-                          <mat-icon class="iconos">request</mat-icon>
-                          <span> Agregar Información </span>
-                        </button>
-                      </mat-menu>
-                    </td>
-                  </ng-container>
-
-
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-              <mat-paginator #MatPaginator1="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
-              aria-label="Select page of periodic elements">
-              </mat-paginator>
+  <mat-card>
+    <!--Tabla de Expedientes-->
+    <ng-container #VistaExpedientes *ngIf="!mostrarTablaPadre">
+      <ng-container>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width:100%">
+          <!-- Name Column -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
           </ng-container>
-      </mat-card>
-  </div>
+          <!-- Weight Column -->
+          <ng-container matColumnDef="nit">
+            <th mat-header-cell *matHeaderCellDef> NIT </th>
+            <td mat-cell *matCellDef="let element">{{element.nit_contribuyente}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fecha_ingreso">
+            <th mat-header-cell *matHeaderCellDef> Fecha Ingreso </th>
+            <td mat-cell *matCellDef="let element">{{element.fecha_ingreso}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="no_expediente_tributa">
+            <th mat-header-cell *matHeaderCellDef> No Expediente Tributa </th>
+            <td mat-cell *matCellDef="let element"> {{element.no_expediente_tributa}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="fecha_preincripcion">
+            <th mat-header-cell *matHeaderCellDef> Fecha de Preinscripcion </th>
+            <td mat-cell *matCellDef="let element">{{element.fecha_preincripcion}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element">{{element.estado}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="profesional">
+            <th mat-header-cell *matHeaderCellDef> Profesional </th>
+            <td mat-cell *matCellDef="let element"> {{element.profesional}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef class="header-table"></th>
+            <td mat-cell class="centrar" *matCellDef="let element">
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Acciones">
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item type="button" title="request" color="primary" (click)="informationExpedient(element.no_expediente_tributa)">
+                  <mat-icon class="iconos">request</mat-icon>
+                  <span> Agregar Información </span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator #MatPaginator1="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </ng-container>
+    </ng-container>
+
+    <!--Datos de Expediente-->
+    <ng-container *ngIf="mostrarTablaPadre">
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-card-subtitle>
+            No. Expediente
+          </mat-card-subtitle>
+          <input matInput [(ngModel)]="data.no_expediente">
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Tipo de Recurso
+          </mat-card-actions>
+          <p></p>
+        </div>
+
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Nombre de Contribuyente
+          </mat-card-actions>
+          <input matInput>
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            NIT
+          </mat-card-actions>
+          <input matInput [(ngModel)]="data.nit_contribuyente">
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Fecha de Ingreso
+          </mat-card-actions>
+          <input matInput [(ngModel)]="data.fecha_ingreso">
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Gerencia de Origen
+          </mat-card-actions>
+          <input matInput [(ngModel)]="data.gerencia_origen">
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Folios
+          </mat-card-actions>
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput type="number" [(ngModel)]="data.folios">
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Observaciones
+          </mat-card-actions>
+          <input matInput type="number" [(ngModel)]="data.observacion">
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            No. Expediente TRIBUTA
+          </mat-card-actions>
+          <input matInput type="number" [(ngModel)]="data.no_expediente_tributa">
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Recurso
+          </mat-card-actions>
+          <p></p>
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Direccion
+          </mat-card-actions>
+          <input matInput type="number" [(ngModel)]="data.direccion_fiscal">
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Cantidad de Ajustes
+          </mat-card-actions>
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput type="number" [(ngModel)]="data.cantidad_ajustes">
+          </mat-form-field >
+        </div>
+
+        <div>
+          <table mat-table [dataSource]="dataImpost" style="width:50%">
+            <!-- Name Column -->
+            <ng-container matColumnDef="impuesto">
+              <th mat-header-cell *matHeaderCellDef> Impuesto </th>
+              <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="monto">
+              <th mat-header-cell *matHeaderCellDef> Monto </th>
+              <td mat-cell *matCellDef="let element"> {{element.monto}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef class="header-table"></th>
+              <td mat-cell class="centrar" *matCellDef="let element">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Acciones">
+                  <mat-icon>more_horiz</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item type="button" title="request" color="primary" (click)="delete(element.nombre)">
+                    <mat-icon class="iconos">delete</mat-icon>
+                    <span> Eliminar </span>
+                  </button>
+                </mat-menu>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="DisplayImpost"></tr>
+            <tr mat-row *matRowDef="let row; columns: DisplayImpost;"></tr>
+          </table>
+        </div>
+
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Impuestos a Pagar
+          </mat-card-actions>
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <mat-select (selectionChange)="saveImpost($event)" name="fill" >
+              <mat-option *ngFor="let recurso of impuesto" [value]="recurso.codigo" [id]="recurso.nombre">
+                {{recurso.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Monto
+          </mat-card-actions>
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input #monto matInput type="number">
+          </mat-form-field>
+        </div>
+
+        <button mat-menu-item type="button" title="request" color="primary" (click)="save(monto.value)">
+          <mat-icon class="iconos">add</mat-icon>
+          <span> Agregar Impuesto</span>
+        </button>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Tipo de Caso
+          </mat-card-actions>
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <mat-select (selectionChange)="newSubType($event)" name="fill">
+              <mat-option *ngFor="let recurso of tipo" [value]="recurso.codigo">
+                {{recurso.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            SubTipo de Caso
+          </mat-card-actions>
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <mat-select>
+              <mat-option *ngFor="let recurso of subTipo" [value]="recurso.codigo">
+                {{recurso.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Fecha de Interposicion
+          </mat-card-actions>
+          <mat-form-field appearance="fill">
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-card-actions>
+            Caso Especial
+          </mat-card-actions>
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <mat-select>
+              <mat-option *ngFor="let recurso of especial" [value]="recurso.codigo">
+                {{recurso.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+        <mat-dialog-actions align="end">
+          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="button()">
+            <mat-icon>close</mat-icon>
+            Cancelar
+          </button>
+          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="newComplement()">
+            <mat-icon>save</mat-icon>
+            Guardar
+          </button>
+          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="newComplement()">
+            <mat-icon>report_problem</mat-icon>
+            Rechazar
+          </button>
+        </mat-dialog-actions>
+      </div>
+    </ng-container>
+  </mat-card>
+
 </div>
