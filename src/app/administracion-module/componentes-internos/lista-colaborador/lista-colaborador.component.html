@@ -1,0 +1,20 @@
+<h1 mat-dialog-title> Profesionales Activos</h1>
+<div mat-dialog-content>
+
+  <p>Profesionales</p>
+
+  <mat-form-field appearance="fill" class="tamaño margin">
+    <mat-select  name="fill" (selectionChange)="save($event)">
+      <mat-option *ngFor="let recurso of data" [value]="recurso.nit" [id]="recurso.noExpedienteTributa.toString()">
+        {{recurso.nombre}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button (click)="saveAssignment()">
+      <mat-icon>save</mat-icon>Guardar
+    </button>
+    <button mat-button (click)="onNoClick()">
+      <mat-icon>back</mat-icon>Regresar
+    </button>
+  </div>

@@ -67,7 +67,7 @@
                       <mat-icon>more_horiz</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                      <button mat-menu-item type="button" title="request" color="primary">
+                      <button mat-menu-item type="button" title="request" color="primary" (click)="getProfessional(19, element.tipo_recurso, element.no_expediente_tributa)">
                         <mat-icon class="iconos">request</mat-icon>
                         <span>Asignacion</span>
                       </button>

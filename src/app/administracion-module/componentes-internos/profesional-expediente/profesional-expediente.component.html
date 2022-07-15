@@ -2,8 +2,7 @@
   <mat-card-title class="mt-2 main-title">Expedientes Asignados</mat-card-title>
   <div><br>
     <mat-card>
-
-      <ng-container>
+      <ng-container *ngIf="!mostrarTablaPadre">
 
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -49,7 +48,7 @@
                 <mat-icon>more_horiz</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item type="button" title="request" color="primary">
+                <button mat-menu-item type="button" title="request" color="primary" (click)="expedient(element.no_expediente_tributa)">
                   <mat-icon class="iconos">request</mat-icon>
                   <span> Ver Detalle </span>
                 </button>
@@ -64,6 +63,150 @@
           aria-label="Select page of periodic elements">
         </mat-paginator>
       </ng-container>
+
+      <!--Datos a revisar por Profesional-->
+
+      <ng-container *ngIf="mostrarTablaPadre">
+        <div class="row">
+          <div class="col-sm-6" appearance="fill">
+            <mat-card-subtitle>
+              No. Expediente
+            </mat-card-subtitle>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.no_expediente" [disabled]="true">
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Nombre de Contribuyente
+            </mat-card-actions>
+            <input matInput>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              NIT
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.nit_contribuyente" [disabled]="true">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Fecha de Ingreso
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.fecha_ingreso" [disabled]="true">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Gerencia de Origen
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.gerencia_origen" [disabled]="true">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Folios
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput type="number" [(ngModel)]="file.folios">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Observaciones
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.observacion" [disabled]="true">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              No. Expediente TRIBUTA
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.no_expediente_tributa" [disabled]="true">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Recurso
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.recurso" [disabled]="true">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Direccion
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.direccion_fiscal" [disabled]="true">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Cantidad de Ajustes
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput type="number" [(ngModel)]="file.cantidad_ajustes">
+            </mat-form-field >
+          </div>
+
+
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Impuestos a Pagar
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.impuesto" [disabled]="true">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Tipo de Caso
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.tipo_caso" [disabled]="true">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              SubTipo de Caso
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.subTipo_caso" [disabled]="true">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-card-actions>
+              Fecha de Interposicion
+            </mat-card-actions>
+            <mat-form-field appearance="fill" class="tamaño margin">
+              <input matInput [(ngModel)]="file.fecha_interposicion" [disabled]="true">
+            </mat-form-field>
+          </div>
+
+          <mat-dialog-actions align="end">
+            <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="viewInformation()">
+              <mat-icon>close</mat-icon>
+              Cancelar
+            </button>
+            <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" >
+              <mat-icon>save</mat-icon>
+              Guardar
+            </button>
+            <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" >
+              <mat-icon>report_problem</mat-icon>
+              Rechazar
+            </button>
+          </mat-dialog-actions>
+        </div>
+      </ng-container>
+
     </mat-card>
   </div>
 </div>

@@ -1,10 +1,11 @@
 import { element } from 'protractor';
-import { Expedient } from './../../../general-module/components/interfaces/Recepcion';
+import { Expedient, InformationExpedient } from './../../../general-module/components/interfaces/Recepcion';
 import { CentralizadorService } from './../../../general-module/components/servicios/centralizador-service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
+import { ProfesionaleService } from './../../../general-module/components/servicios/profesional-service'
 
 interface Data {
   codigo: number;
@@ -31,6 +32,29 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
   impost: string = "";
   idImpost: number =0;
   mont: number = 0;
+
+  file: InformationExpedient = {
+    impuesto: '',
+    estado: '',
+    folios: 5,
+    fecha_ingreso: new Date(),
+    observacion: '',
+    especialista: '',
+    tipo_caso: '',
+    tipo_recurso: '',
+    profesional: '',
+    recurso: '',
+    no_expediente: '',
+    id_agenda: '',
+    nit_contribuyente: '',
+    gerencia_origen: '',
+    cantidad_ajustes: 0,
+    fecha_preincripcion: new Date(),
+    direccion_fiscal: '',
+    fecha_interposicion: new Date(),
+    subTipo_caso: '',
+    no_expediente_tributa: ""
+  };
 
   info: Expedient[] = [];
  data: Expedient = {
@@ -74,7 +98,8 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     this.dataSource.paginator = mp1;
   }
 
-  constructor(private CentralizadorService: CentralizadorService) { }
+  constructor(private CentralizadorService: CentralizadorService,
+    private ProfesionaleService: ProfesionaleService) { }
 
   ngOnInit(): void {
     this.Expedient();
@@ -153,6 +178,30 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
   }
   button(){
     console.log(this.info)
+  }
+
+  expedient (noExedient: String) {
+    this.ProfesionaleService.getExpendient(noExedient)
+      .toPromise()
+      .then(res => {
+        this.file.impuesto = res.impuesto
+        this.file.estado = res.estado
+        this.file.folios = res.folios
+        this.file.fecha_ingreso = res.fecha_ingreso
+        this.file.observacion = res.observacion
+        this.file.tipo_caso = res.tipo_caso
+        this.file.recurso = res.recurso
+        this.file.no_expediente = res.no_expediente
+        this.file.nit_contribuyente = res.nit_contribuyente
+        this.file.cantidad_ajustes = res.cantidad_ajustes
+        this.file.direccion_fiscal = res.direccion_fiscal
+        this.file.fecha_interposicion = res.fecha_interposicion
+        this.file.subTipo_caso = res.subTipo_caso
+        this.file.gerencia_origen = res.gerencia_origen
+        this.file.no_expediente_tributa = noExedient
+      })
+    console.log(this.file);
+    this.newComplement();
   }
 
 }

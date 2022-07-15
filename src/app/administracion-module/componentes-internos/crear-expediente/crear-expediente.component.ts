@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export interface Data {
   noExpediente: string;
@@ -27,7 +26,6 @@ interface TipoRecurso {
 })
 export class CrearExpedienteComponent implements OnInit {
 
-  crearColab!: FormGroup;
   mostrarFechas: boolean = true;
 
   recursos: TipoRecurso[] = [

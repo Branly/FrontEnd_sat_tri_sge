@@ -1,6 +1,6 @@
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Expedient } from './../interfaces/Recepcion';
+import { Expedient, InformationExpedient } from './../interfaces/Recepcion';
 import { Injectable } from "@angular/core";
 import { GeneralService } from './general.service';
 
@@ -13,8 +13,12 @@ import { GeneralService } from './general.service';
         private serviceProfesional: GeneralService
     ){}
 
-    getExpendient(): Observable<Expedient[]>{
-        return this.serviceProfesional.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Files/12345678/28, 30, 31`);
+    getExpendients(): Observable<Expedient[]>{
+        return this.serviceProfesional.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Files/23842353/28, 30, 31`);
     }
+
+    getExpendient(file:String): Observable<InformationExpedient>{
+      return this.serviceProfesional.getData<InformationExpedient>(environment.API_IFI_SIPF,`Files/informationProfessional/${file}`);
+  }
 
   }

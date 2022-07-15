@@ -49,7 +49,7 @@
                 <mat-icon>more_horiz</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item type="button" title="request" color="primary" (click)="informationExpedient(element.no_expediente_tributa)">
+                <button mat-menu-item type="button" title="request" color="primary" (click)="expedient(element.no_expediente_tributa)">
                   <mat-icon class="iconos">request</mat-icon>
                   <span> Agregar Información </span>
                 </button>
@@ -70,17 +70,22 @@
     <!--Datos de Expediente-->
     <ng-container *ngIf="mostrarTablaPadre">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6" appearance="fill">
           <mat-card-subtitle>
             No. Expediente
           </mat-card-subtitle>
-          <input matInput [(ngModel)]="data.no_expediente">
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput [(ngModel)]="file.no_expediente" [disabled]="true">
+          </mat-form-field>
         </div>
-        <div class="col-sm-6">
-          <mat-card-actions>
+
+        <div class="col-sm-6" appearance="fill">
+          <mat-card-subtitle>
             Tipo de Recurso
-          </mat-card-actions>
-          <p></p>
+          </mat-card-subtitle>
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput [(ngModel)]="file.tipo_recurso" [disabled]="true">
+          </mat-form-field>
         </div>
 
         <div class="col-sm-6">
@@ -93,58 +98,72 @@
           <mat-card-actions>
             NIT
           </mat-card-actions>
-          <input matInput [(ngModel)]="data.nit_contribuyente">
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput [(ngModel)]="file.nit_contribuyente" [disabled]="true">
+          </mat-form-field>
         </div>
         <div class="col-sm-6">
           <mat-card-actions>
             Fecha de Ingreso
           </mat-card-actions>
-          <input matInput [(ngModel)]="data.fecha_ingreso">
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput [(ngModel)]="file.fecha_ingreso" [disabled]="true">
+          </mat-form-field>
         </div>
         <div class="col-sm-6">
           <mat-card-actions>
             Gerencia de Origen
           </mat-card-actions>
-          <input matInput [(ngModel)]="data.gerencia_origen">
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput [(ngModel)]="file.gerencia_origen" [disabled]="true">
+          </mat-form-field>
         </div>
         <div class="col-sm-6">
           <mat-card-actions>
             Folios
           </mat-card-actions>
           <mat-form-field appearance="fill" class="tamaño margin">
-            <input matInput type="number" [(ngModel)]="data.folios">
+            <input matInput type="number" [(ngModel)]="file.folios">
           </mat-form-field>
         </div>
         <div class="col-sm-6">
           <mat-card-actions>
             Observaciones
           </mat-card-actions>
-          <input matInput type="number" [(ngModel)]="data.observacion">
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput [(ngModel)]="file.observacion" [disabled]="true">
+          </mat-form-field>
         </div>
         <div class="col-sm-6">
           <mat-card-actions>
             No. Expediente TRIBUTA
           </mat-card-actions>
-          <input matInput type="number" [(ngModel)]="data.no_expediente_tributa">
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput [(ngModel)]="file.no_expediente_tributa" [disabled]="true">
+          </mat-form-field>
         </div>
         <div class="col-sm-6">
           <mat-card-actions>
             Recurso
           </mat-card-actions>
-          <p></p>
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput [(ngModel)]="file.recurso" [disabled]="true">
+          </mat-form-field>
         </div>
         <div class="col-sm-6">
           <mat-card-actions>
             Direccion
           </mat-card-actions>
-          <input matInput type="number" [(ngModel)]="data.direccion_fiscal">
+          <mat-form-field appearance="fill" class="tamaño margin">
+            <input matInput [(ngModel)]="file.direccion_fiscal" [disabled]="true">
+          </mat-form-field>
         </div>
         <div class="col-sm-6">
           <mat-card-actions>
             Cantidad de Ajustes
           </mat-card-actions>
           <mat-form-field appearance="fill" class="tamaño margin">
-            <input matInput type="number" [(ngModel)]="data.cantidad_ajustes">
+            <input matInput type="number" [(ngModel)]="file.cantidad_ajustes">
           </mat-form-field >
         </div>
 
