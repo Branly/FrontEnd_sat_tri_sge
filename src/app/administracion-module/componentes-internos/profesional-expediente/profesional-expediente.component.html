@@ -68,13 +68,16 @@
 
       <ng-container *ngIf="mostrarTablaPadre">
         <div class="row">
-          <div class="col-sm-6" appearance="fill">
-            <mat-card-subtitle>
+          <div class="col-sm-6">
+            <mat-card-actions>
               No. Expediente
-            </mat-card-subtitle>
-            <mat-form-field appearance="fill" class="tamaño margin">
+            </mat-card-actions>
+            <mat-card-actions>
+              {{file.no_expediente}}
+            </mat-card-actions>
+            <!-- <mat-form-field appearance="fill" class="tamaño margin">
               <input matInput [(ngModel)]="file.no_expediente" [disabled]="true">
-            </mat-form-field>
+            </mat-form-field> -->
           </div>
 
           <div class="col-sm-6">

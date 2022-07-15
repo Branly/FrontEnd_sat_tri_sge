@@ -1,3 +1,4 @@
+import { Complement } from './../../../general-module/components/interfaces/centralizador';
 import { element } from 'protractor';
 import { Expedient, InformationExpedient } from './../../../general-module/components/interfaces/Recepcion';
 import { CentralizadorService } from './../../../general-module/components/servicios/centralizador-service';
@@ -53,11 +54,12 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     direccion_fiscal: '',
     fecha_interposicion: new Date(),
     subTipo_caso: '',
-    no_expediente_tributa: ""
+    no_expediente_tributa: "",
+    idCasoEspecial: 0
   };
 
   info: Expedient[] = [];
- data: Expedient = {
+/*  data: Expedient = {
     no_expediente_tributa: "",
     tipo_recurso: "",
     nit_contribuyente: "",
@@ -74,7 +76,7 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     subTipo_caso: 0,
     estado: "",
     observacion: ""
-};
+}; */
 
   displayedColumns: string[] = [
     'nombre', 'nit', 'fecha_ingreso', 'no_expediente_tributa',
@@ -114,7 +116,7 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     })
   }
 
-  newComplement(){
+  showInformation(){
     this.mostrarTablaPadre = !this.mostrarTablaPadre;
 
   }
@@ -127,7 +129,16 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
   newSubType(tipo: MatSelectChange){
      this.CentralizadorService.getSubType(tipo.value).toPromise().then(res => {
       this.subTipo = res;
-    })
+    });
+    this.file.tipo_caso = tipo.value;
+  }
+
+  getSubType(subType:MatSelectChange){
+    this.file.subTipo_caso = subType.value;
+  }
+
+  getCase(caso:MatSelectChange){
+    this.file.idCasoEspecial = caso.value;
   }
 
   impostType(){
@@ -136,7 +147,7 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     })
   }
 
-  informationExpedient(expedient: String){
+  /* informationExpedient(expedient: String){
     this.CentralizadorService.getInformation(expedient).toPromise().then(res => {
       this.info[0] = res[0];
       //console.log(res);
@@ -144,7 +155,7 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     console.log(this.info);
     this.pastToInformation();
     this.newComplement();
-  }
+  } */
 
   saveImpost(impuesto:any){
     this.impost = impuesto.source.selected.viewValue;
@@ -172,10 +183,10 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
       aux = [];
   }
 
-  pastToInformation(){
+/*   pastToInformation(){
     this.info.forEach(element => this.data = element)
     console.log(this.data)
-  }
+  } */
   button(){
     console.log(this.info)
   }
@@ -201,7 +212,50 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
         this.file.no_expediente_tributa = noExedient
       })
     console.log(this.file);
-    this.newComplement();
+    this.showInformation();
+  }
+
+  newImpost(){
+    this.currentImpost.forEach(element =>
+      {
+        console.log(element);
+        this.CentralizadorService.setImpost(element.codigo, element.monto, this.file.no_expediente_tributa).
+        toPromise().
+        then(data => console.log(data));
+      }
+      );
+  }
+
+  newComplement(){
+    if (this.currentImpost.length > 0) {
+      var complement: Complement = {
+        complejidad: 0,
+        fechaInterposicion: this.file.fecha_interposicion,
+        fechaModifica: new Date(),
+        idCasoEspecial: this.file.idCasoEspecial,
+        ipModifica: "22",
+        nitColaboradorConfronto: "",
+        noExpedienteTributa: this.file.no_expediente_tributa,
+        subTipoCaso: +this.file.subTipo_caso,
+        tipoCaso: +this.file.tipo_caso,
+        usuarioModifica: ""
+      }
+      this.CentralizadorService.setComplement(complement).
+      toPromise().then(data => console.log(data));
+      this.newImpost();
+      this.setState();
+      this.Expedient();
+      this.showInformation();
+    }else{
+      alert("no Tiene Agregado ningun Impuesto");
+    }
+
+  }
+  setState(){
+    this.CentralizadorService.setProfessional(this.file.no_expediente_tributa).
+    toPromise().then(res => {
+      console.log(res);
+    })
   }
 
 }

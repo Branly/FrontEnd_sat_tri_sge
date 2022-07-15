@@ -168,6 +168,11 @@
         </div>
 
         <div>
+
+          <mat-card-actions>
+            Impuestos a Pagar
+          </mat-card-actions>
+
           <table mat-table [dataSource]="dataImpost" style="width:50%">
             <!-- Name Column -->
             <ng-container matColumnDef="impuesto">
@@ -202,7 +207,7 @@
 
         <div class="col-sm-6">
           <mat-card-actions>
-            Impuestos a Pagar
+            Tipo de Impuesto
           </mat-card-actions>
           <mat-form-field appearance="fill" class="tamaño margin">
             <mat-select (selectionChange)="saveImpost($event)" name="fill" >
@@ -242,7 +247,7 @@
             SubTipo de Caso
           </mat-card-actions>
           <mat-form-field appearance="fill" class="tamaño margin">
-            <mat-select>
+            <mat-select (selectionChange)="getSubType($event)" name="fill">
               <mat-option *ngFor="let recurso of subTipo" [value]="recurso.codigo">
                 {{recurso.nombre}}
               </mat-option>
@@ -254,7 +259,7 @@
             Fecha de Interposicion
           </mat-card-actions>
           <mat-form-field appearance="fill">
-            <input matInput [matDatepicker]="picker">
+            <input matInput [matDatepicker]="picker" [(ngModel)]="file.fecha_interposicion">
             <mat-hint>DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -265,7 +270,7 @@
             Caso Especial
           </mat-card-actions>
           <mat-form-field appearance="fill" class="tamaño margin">
-            <mat-select>
+            <mat-select (selectionChange)="getCase($event)" name="fill">
               <mat-option *ngFor="let recurso of especial" [value]="recurso.codigo">
                 {{recurso.nombre}}
               </mat-option>
@@ -275,7 +280,7 @@
 
 
         <mat-dialog-actions align="end">
-          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="button()">
+          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="showInformation()">
             <mat-icon>close</mat-icon>
             Cancelar
           </button>
@@ -283,7 +288,7 @@
             <mat-icon>save</mat-icon>
             Guardar
           </button>
-          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="newComplement()">
+          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="showInformation()">
             <mat-icon>report_problem</mat-icon>
             Rechazar
           </button>

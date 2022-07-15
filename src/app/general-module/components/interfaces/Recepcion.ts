@@ -38,4 +38,5 @@ export interface InformationExpedient {
   direccion_fiscal: String;
   fecha_interposicion: Date;
   subTipo_caso: String;
+  idCasoEspecial: Number;
 }

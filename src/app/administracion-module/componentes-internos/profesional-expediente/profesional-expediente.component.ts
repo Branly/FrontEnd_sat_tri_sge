@@ -33,7 +33,8 @@ export class ProfesionalExpedienteComponent implements OnInit {
     direccion_fiscal: '',
     fecha_interposicion: new Date(),
     subTipo_caso: '',
-    no_expediente_tributa: ""
+    no_expediente_tributa: "",
+    idCasoEspecial: 0
   }
   displayedColumns: string[] = [
     'noexpedientetributa',
