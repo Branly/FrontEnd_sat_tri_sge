@@ -209,7 +209,8 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
         this.file.fecha_interposicion = res.fecha_interposicion
         this.file.subTipo_caso = res.subTipo_caso
         this.file.gerencia_origen = res.gerencia_origen
-        this.file.no_expediente_tributa = noExedient
+        this.file.no_expediente_tributa = res.no_expediente_tributa
+        this.file.tipo_recurso = res.tipo_recurso
       })
     console.log(this.file);
     this.showInformation();

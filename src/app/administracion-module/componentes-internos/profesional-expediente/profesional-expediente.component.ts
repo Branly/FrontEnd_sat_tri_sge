@@ -1,3 +1,8 @@
+import { Providens } from './../../../general-module/components/interfaces/profesional'
+import { DialogService } from './../../../general-module/components/servicios/dialog.service'
+import { UtilidadesService } from './../../../general-module/components/servicios/utilidades.service'
+import { ComentarioProvidenciaComponent } from './../comentario-providencia/comentario-providencia.component'
+import { MatDialog } from '@angular/material/dialog'
 import { InformationExpedient } from './../../../general-module/components/interfaces/Recepcion'
 import { ProfesionaleService } from './../../../general-module/components/servicios/profesional-service'
 import { Component, OnInit, ViewChild } from '@angular/core'
@@ -33,7 +38,7 @@ export class ProfesionalExpedienteComponent implements OnInit {
     direccion_fiscal: '',
     fecha_interposicion: new Date(),
     subTipo_caso: '',
-    no_expediente_tributa: "",
+    no_expediente_tributa: '',
     idCasoEspecial: 0
   }
   displayedColumns: string[] = [
@@ -46,13 +51,30 @@ export class ProfesionalExpedienteComponent implements OnInit {
     'profecional',
     'acciones'
   ]
+
+  data: Providens = {
+    tipoProvidencia:0,
+  noexpediente: "",
+  idProvidencia: "",
+  idTribunal: 0,
+  comentario: "",
+  resolucion: "",
+  fechaCreacion: new Date(),
+  fechaModifica: new Date(),
+  ipModifica: "",
+  usuarioModifica: ""
+  }
+
   dataSource = new MatTableDataSource()
 
   @ViewChild('MatPaginator1') set matPaginator (mp1: MatPaginator) {
     this.dataSource.paginator = mp1
   }
 
-  constructor (private ProfesionaleService: ProfesionaleService) {}
+  constructor (
+    private ProfesionaleService: ProfesionaleService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit (): void {
     this.Expedients()
@@ -85,12 +107,27 @@ export class ProfesionalExpedienteComponent implements OnInit {
         this.file.subTipo_caso = res.subTipo_caso
         this.file.gerencia_origen = res.gerencia_origen
         this.file.no_expediente_tributa = noExedient
+        this.file.tipo_recurso = res.tipo_recurso
       })
-    console.log(this.file)
     this.viewInformation()
   }
 
   viewInformation () {
     this.mostrarTablaPadre = !this.mostrarTablaPadre
+  }
+
+  newComent () {
+    if (this.file.tipo_recurso == "Tributario") {
+      this.data.idTribunal = 9;
+    }else if(this.file.tipo_recurso == "Aduanero"){
+      this.data.idTribunal = 10;
+    }
+    this.data.noexpediente = this.file.no_expediente_tributa.toString();
+    this.data.tipoProvidencia = 22;
+    const dialogRef = this.dialog.open(ComentarioProvidenciaComponent, {
+      width: '500px',
+      disableClose: true,
+      data: this.data
+    })
   }
 }

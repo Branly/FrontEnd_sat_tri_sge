@@ -1,0 +1,16 @@
+<h1 mat-dialog-title> Cometario de Providencia </h1>
+<div mat-dialog-content>
+
+  <div class="row">
+    <div class="col-sm-4" appearance="fill">
+      <textarea name="comentario" id="1" cols="50" rows="10" [(ngModel)]="data.comentario" ></textarea>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="data.comentario" cdkFocusInitial (click)="onNoClick()">
+      <mat-icon>close</mat-icon>Cancelar
+    </button>
+    <button mat-button cdkFocusInitial (click)="newProvidens()">
+      <mat-icon>save</mat-icon>Guardar
+    </button>
+  </mat-dialog-actions>

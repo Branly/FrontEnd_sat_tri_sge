@@ -2,6 +2,10 @@
   <mat-card-title class="main-title">Centralizador de Entrada</mat-card-title>
 
   <mat-card>
+    <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary">
+      <mat-icon>add</mat-icon>
+      Reporte
+  </button>
     <!--Tabla de Expedientes-->
     <ng-container #VistaExpedientes *ngIf="!mostrarTablaPadre">
       <ng-container>
@@ -225,11 +229,13 @@
             <input #monto matInput type="number">
           </mat-form-field>
         </div>
+        <mat-dialog-actions>
+          <button mat-menu-item type="button" title="request" color="primary" (click)="save(monto.value)">
+            <mat-icon class="iconos">add</mat-icon>
+            <span> Agregar Impuesto</span>
+          </button>
+        </mat-dialog-actions>
 
-        <button mat-menu-item type="button" title="request" color="primary" (click)="save(monto.value)">
-          <mat-icon class="iconos">add</mat-icon>
-          <span> Agregar Impuesto</span>
-        </button>
         <div class="col-sm-6">
           <mat-card-actions>
             Tipo de Caso

@@ -12,6 +12,7 @@ import { CrearExpedienteComponent } from './componentes-internos/crear-expedient
 import { PrestamoExpedienteComponent } from './componentes-internos/prestamo-expediente/prestamo-expediente.component';
 import { SecretarioAgendaComponent } from './componentes-internos/secretario-agenda/secretario-agenda.component';
 import { ListaColaboradorComponent } from './componentes-internos/lista-colaborador/lista-colaborador.component';
+import { ComentarioProvidenciaComponent } from './componentes-internos/comentario-providencia/comentario-providencia.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ListaColaboradorComponent } from './componentes-internos/lista-colabora
         PrestamoExpedienteComponent,
         SecretarioAgendaComponent,
         ListaColaboradorComponent,
+        ComentarioProvidenciaComponent,
     ],
     imports: [
         CommonModule,
