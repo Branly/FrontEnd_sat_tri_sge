@@ -1,20 +1,34 @@
-import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
-import { Expedient } from './../interfaces/Recepcion';
-import { Injectable } from "@angular/core";
-import { GeneralService } from './general.service';
+import { environment } from 'src/environments/environment'
+import { Observable } from 'rxjs'
+import { Expedient, createExpedient, Loan} from './../interfaces/Recepcion'
+import { Injectable } from '@angular/core'
+import { GeneralService } from './general.service'
 
 @Injectable({
-    providedIn: 'root'
-  })
-  export class RecepcionService{
+  providedIn: 'root'
+})
+export class RecepcionService {
+  constructor (private serviceRecepcion: GeneralService) {}
 
-    constructor(
-        private serviceRecepcion: GeneralService
-    ){}
-
-    getExpendient(): Observable<Expedient[]>{
-        return this.serviceRecepcion.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Receptionist`);
-    }
-
+  getExpendient (): Observable<Expedient[]> {
+    return this.serviceRecepcion.getData<Expedient[]>(
+      environment.API_IFI_SIPF,
+      `Files/Receptionist`
+    )
   }
+
+  setExpedient (newExpediente: createExpedient): Observable<createExpedient> {
+    return this.serviceRecepcion.postData<createExpedient, Object>(
+      environment.API_IFI_SIPF + `/Files/File/`,
+      newExpediente
+    )
+  }
+
+  setLoan (newLoan: Loan): Observable<Loan> {
+    return this.serviceRecepcion.postData<Loan, Object>(
+      environment.API_IFI_SIPF + `/Files/Loan/`,
+      newLoan
+    )
+  }
+
+}

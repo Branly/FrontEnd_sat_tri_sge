@@ -2,10 +2,15 @@
     <mat-card-title class="mt-2 main-title">Recepción de Expedientes</mat-card-title>
     <div><br>
     <mat-card>
+      <mat-form-field appearance="standard">
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="">
+      </mat-form-field>
         <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="newFile()">
             <mat-icon>add</mat-icon>
             Agregar Expediente
         </button>
+
         <ng-container>
 
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

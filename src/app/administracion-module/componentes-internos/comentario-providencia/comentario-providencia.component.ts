@@ -6,7 +6,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 @Component({
   selector: 'app-comentario-providencia',
   templateUrl: './comentario-providencia.component.html',
-  styleUrls: ['./comentario-providencia.component.css']
+  styleUrls: ['./comentario-providencia.component.scss']
 })
 export class ComentarioProvidenciaComponent implements OnInit {
 

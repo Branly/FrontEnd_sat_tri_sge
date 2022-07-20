@@ -125,7 +125,8 @@ export class ProfesionalExpedienteComponent implements OnInit {
     this.data.noexpediente = this.file.no_expediente_tributa.toString();
     this.data.tipoProvidencia = 22;
     const dialogRef = this.dialog.open(ComentarioProvidenciaComponent, {
-      width: '500px',
+      width: '400px',
+      height: '250px',
       disableClose: true,
       data: this.data
     })

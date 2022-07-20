@@ -40,3 +40,37 @@ export interface InformationExpedient {
   subTipo_caso: String;
   idCasoEspecial: Number;
 }
+
+export interface createExpedient{
+  cantidadAjustes: Number;
+  direccionFiscal: String;
+  fechaIngreso: Date;
+  fechaModifica: Date;
+  fechaPreincripcion: Date;
+  folios: Number;
+  gerenciaOrigen: String;
+  idAgenda: String;
+  idEstado: Number;
+  idProces: Number;
+  ipModifica: String;
+  nitContribuyente: String;
+  nitProfesional: String;
+  noExpediente: String;
+  noExpedienteTributa: String;
+  tipoRecurso: Number;
+  usuarioModifica: String;
+}
+
+export interface Loan{
+  comentario: String;
+  departamento: Number;
+  fechaEntrada: Date;
+  fechaModifica: Date;
+  fechaSalida: Date;
+  gerencia: Number;
+  idPrestamo: Number;
+  ipModifica: String;
+  nitSolicitante: String;
+  noExpedienteTributa: String;
+  usuarioModifica: String
+}

@@ -1,12 +1,13 @@
-<h1 mat-dialog-title> Nuevo Expediente{{data.noExpediente}}</h1>
+<h1 mat-dialog-title> Nuevo Expediente</h1>
 <div mat-dialog-content>
 
+ <form [formGroup]="crearExp" class="crearExpediente">
   <div class="row">
     <div class="col-sm-4">
     <p>No. Expediente</p>
-    <mat-form-field appearance="fill" class="tamaño margin">
+    <mat-form-field appearance="fill" class="tamaño">
       <mat-label>No Expediente</mat-label>
-      <input matInput [(ngModel)]="data.noExpediente">
+      <input matInput formControlName="noExpediente">
     </mat-form-field>
   </div>
 
@@ -14,9 +15,9 @@
 
    <div class="col-sm-4">
    <p>Tipo de Recurso</p>
-    <mat-form-field appearance="fill" class="tamaño margin">
+    <mat-form-field appearance="fill" class="tamaño">
       <mat-label>Tipo de Recurso</mat-label>
-      <mat-select [(ngModel)]="data.tipoRecurso" name="fill">
+      <mat-select formControlName="tipoRecurso" name="fill">
         <mat-option *ngFor="let recurso of recursos" [value]="recurso.value">
           {{recurso.viewValue}}
         </mat-option>
@@ -26,70 +27,72 @@
 
    <div class="col-sm-4">
     <p>Nombre del Contribuyente</p>
-    <mat-form-field appearance="fill" class="tamaño margin">
+    <mat-form-field appearance="fill" class="tamaño">
       <mat-label>nombre</mat-label>
-      <input matInput [(ngModel)]="data.nombre">
+      <input matInput formControlName="nombre">
     </mat-form-field>
    </div>
 
    <div class="col-sm-4">
     <p>NIT del Contribuyente</p>
-    <mat-form-field appearance="fill" class="tamaño margin">
+    <mat-form-field appearance="fill" class="tamaño">
       <mat-label>nit</mat-label>
-      <input matInput [(ngModel)]="data.nit">
+      <input matInput formControlName="nitContribuyente">
     </mat-form-field>
   </div>
 
   <div class="col-sm-4">
     <p>Gerencia Origen</p>
-    <mat-form-field appearance="fill" class="tamaño margin">
+    <mat-form-field appearance="fill" class="tamaño">
       <mat-label>gerencia</mat-label>
-      <input matInput [(ngModel)]="data.gerenciaOrigen">
+      <input matInput formControlName="gerenciaOrigen">
     </mat-form-field>
   </div>
 
   <div class="col-sm-4">
     <p>Folios</p>
-    <mat-form-field appearance="fill" class="tamaño margin">
+    <mat-form-field appearance="fill" class="tamaño">
       <mat-label>folios</mat-label>
-      <input matInput [(ngModel)]="data.folios">
+      <input matInput formControlName="folios" type="number">
     </mat-form-field>
   </div>
 
   <div class="col-sm-4">
     <p>Resolucion</p>
-    <mat-form-field appearance="fill" class="tamaño margin">
+    <mat-form-field appearance="fill" class="tamaño">
       <mat-label>resolucion</mat-label>
-      <input matInput [(ngModel)]="data.resolucion">
+      <input matInput formControlName="recurso">
     </mat-form-field>
   </div>
 
   <div class="col-sm-4">
     <p>Direccion</p>
-    <mat-form-field appearance="fill" class="tamaño margin">
+    <mat-form-field appearance="fill" class="tamaño">
       <mat-label>direccion</mat-label>
-      <input matInput [(ngModel)]="data.direccion">
+      <input matInput formControlName="direccionFiscal">
     </mat-form-field>
   </div>
 
   <div class="col-sm-4">
     <p>Ajuses</p>
-    <mat-form-field appearance="fill" class="tamaño margin">
+    <mat-form-field appearance="fill" class="tamaño">
       <mat-label>Ajustes</mat-label>
-      <input matInput [(ngModel)]="data.ajustes">
+      <input matInput formControlName="cantidadAjustes" type="number">
     </mat-form-field>
   </div>
   </div>
-
-
   <mat-dialog-actions align="end">
     <button mat-button (click)="onNoClick()">
       <mat-icon>close</mat-icon>Cancelar
     </button>
-    <button mat-button [mat-dialog-close]="data.noExpediente" cdkFocusInitial>
+    <button mat-button  cdkFocusInitial (click)="createExpedient()">
       <mat-icon>save</mat-icon>Guardar
     </button>
     <button mat-button (click)="onNoClick()">
       <mat-icon>report_problem</mat-icon>Rechazar
     </button>
   </mat-dialog-actions>
+ </form>
+
+
+

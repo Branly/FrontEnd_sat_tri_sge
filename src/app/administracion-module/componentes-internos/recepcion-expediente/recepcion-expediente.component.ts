@@ -51,8 +51,8 @@ export class RecepcionExpedienteComponent implements OnInit {
 
   newLoan(): void {
     const dialogRef = this.dialog.open(PrestamoExpedienteComponent, {
-      width: '300px',
-      disableClose: true,
+      /* width: '300px',
+      disableClose: true, */
       data: { usuario: this.usuario,
               gerencia: this.gerencia,
               departamento: this.departamento,
@@ -63,8 +63,8 @@ export class RecepcionExpedienteComponent implements OnInit {
 
   newFile(): void {
     const dialogRef = this.dialog.open(CrearExpedienteComponent, {
-      width: '50%',
-      height: '70%',
+      /* width: 'auto',
+      height: 'auto', */
       disableClose: true,
       data: {noExpediente: this.noExpediente,
              tipoRecurso: this.tipoRecurso,
@@ -89,7 +89,12 @@ export class RecepcionExpedienteComponent implements OnInit {
       console.log(res);
       this.dataSource.data = res;
 
-    })
+    });
+  }
+
+  public applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
 

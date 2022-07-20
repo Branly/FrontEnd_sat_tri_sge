@@ -1,41 +1,56 @@
-<h1 mat-dialog-title> Nuevo Prestamoo</h1>
+<h1 mat-dialog-title>Nuevo Prestamoo</h1>
 <div mat-dialog-content>
 
-  <p>Usuario</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Usuario</mat-label>
-    <input matInput [(ngModel)]="data.usuario">
-  </mat-form-field>
+  <form [formGroup]="crearPrestamo" class="crearExpediente">
+    <div class="row">
+      <div class="col-sm-4">
+        <p>NIT Usuario</p>
+        <mat-form-field appearance="fill">
+          <input matInput formControlName="Nit" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <p>Gerencia</p>
+        <mat-form-field appearance="fill">
+          <input matInput formControlName="gerencia" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <p>Departamento</p>
+        <mat-form-field appearance="fill">
+          <input matInput formControlName="departamento" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <p>Comentario</p>
+        <mat-form-field appearance="fill">
+          <textarea cols="100" rows="3" matInput formControlName="departamento" class="comentario"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <div id="box2">
+          <button id="selectButton" mat-raised-button (click)="fileInput.click()">
+            Seleccione Archivo
+          </button>
+          <input #fileInput type="file" hidden multiple />
+          <span></span>
+        </div>
+      </div>
+    </div>
 
-  <p>Gerencia</p>
-  <mat-form-field appearance="fill">
-    <mat-label>gerencia</mat-label>
-    <input matInput [(ngModel)]="data.gerencia">
-  </mat-form-field>
 
-  <p>Departamento</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Departamento</mat-label>
-    <input matInput [(ngModel)]="data.departamento">
-  </mat-form-field>
-
-  <p>Comentario</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Comentario</mat-label>
-    <textarea cols="100" rows="3" matInput [(ngModel)]="data.comentarios"></textarea>
-  </mat-form-field>
-
-  <div id="box2">
-    <button id="selectButton" mat-raised-button (click)="fileInput.click()">Seleccione Archivo</button>
-    <input #fileInput type="file" hidden multiple />
-    <span></span>
-  </div>
-
-  <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">
-      <mat-icon>close</mat-icon>Cancelar
-    </button>
-    <button mat-button [mat-dialog-close]="data.noExpedienteTributa" cdkFocusInitial>
-      <mat-icon>save</mat-icon>Guardar
-    </button>
-  </div>
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="onNoClick()">
+        <mat-icon>close</mat-icon>Cancelar
+      </button>
+      <button
+        mat-button
+        [mat-dialog-close]="data.noExpedienteTributa"
+        cdkFocusInitial
+        (click)="createLoan()"
+      >
+        <mat-icon>save</mat-icon>Guardar
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

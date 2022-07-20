@@ -1,0 +1,31 @@
+.comentario {
+  width: 300px;
+  height: 30px;
+}
+
+.tamaño {
+  width: auto;
+  height: auto;
+}
+
+.crearExpediente{
+  height: 300px;
+  width: 650px;
+}
+
+/* .margin{
+margin-top: 5px;
+} */
+
+/* .row{
+  margin: auto;
+  padding: auto;
+} */
+
+.readonly-wrapper {
+cursor: not-allowed;
+}
+
+.readonly-wrapper .readonly-block {
+pointer-events: none;
+}
