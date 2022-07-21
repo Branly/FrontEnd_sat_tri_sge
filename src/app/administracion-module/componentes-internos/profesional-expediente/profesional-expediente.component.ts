@@ -39,7 +39,9 @@ export class ProfesionalExpedienteComponent implements OnInit {
     fecha_interposicion: new Date(),
     subTipo_caso: '',
     no_expediente_tributa: '',
-    idCasoEspecial: 0
+    idCasoEspecial: 0,
+    monto: 0,
+    nombre: ""
   }
   displayedColumns: string[] = [
     'noexpedientetributa',
@@ -106,8 +108,9 @@ export class ProfesionalExpedienteComponent implements OnInit {
         this.file.fecha_interposicion = res.fecha_interposicion
         this.file.subTipo_caso = res.subTipo_caso
         this.file.gerencia_origen = res.gerencia_origen
-        this.file.no_expediente_tributa = noExedient
+        this.file.no_expediente_tributa = noExedient.toString()
         this.file.tipo_recurso = res.tipo_recurso
+        this.file.nombre = res.nombre
       })
     this.viewInformation()
   }
@@ -125,8 +128,7 @@ export class ProfesionalExpedienteComponent implements OnInit {
     this.data.noexpediente = this.file.no_expediente_tributa.toString();
     this.data.tipoProvidencia = 22;
     const dialogRef = this.dialog.open(ComentarioProvidenciaComponent, {
-      width: '400px',
-      height: '250px',
+
       disableClose: true,
       data: this.data
     })

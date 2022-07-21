@@ -14,8 +14,8 @@ import { GeneralService } from './general.service';
         private serviceCentralizador: GeneralService
     ){}
 
-    getExpendient(): Observable<Expedient[]>{
-        return this.serviceCentralizador.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Files/90007655/7`);
+    getExpendient(nit:String): Observable<Expedient[]>{
+        return this.serviceCentralizador.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Files/${nit}/7`);
     }
 
     getType(tipo: Number): Observable<Data[]>{

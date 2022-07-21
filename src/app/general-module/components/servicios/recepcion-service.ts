@@ -1,3 +1,4 @@
+import { Data } from './../interfaces/centralizador';
 import { environment } from 'src/environments/environment'
 import { Observable } from 'rxjs'
 import { Expedient, createExpedient, Loan} from './../interfaces/Recepcion'
@@ -29,6 +30,15 @@ export class RecepcionService {
       environment.API_IFI_SIPF + `/Files/Loan/`,
       newLoan
     )
+  }
+
+  getType(tipo: Number): Observable<Data[]>{
+    return this.serviceRecepcion.getData<Data[]>(environment.API_IFI_SIPF,`CatData/${tipo}`);
+  }
+
+
+  setState(file: String): Observable<String>{
+    return this.serviceRecepcion.putData<String, String>(environment.API_IFI_SIPF,`/Files/StateInformationComfirmation/${file}`)
   }
 
 }

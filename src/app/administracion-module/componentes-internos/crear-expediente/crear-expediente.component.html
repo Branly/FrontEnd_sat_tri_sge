@@ -18,8 +18,8 @@
     <mat-form-field appearance="fill" class="tamaño">
       <mat-label>Tipo de Recurso</mat-label>
       <mat-select formControlName="tipoRecurso" name="fill">
-        <mat-option *ngFor="let recurso of recursos" [value]="recurso.value">
-          {{recurso.viewValue}}
+        <mat-option *ngFor="let recurso of recursos" [value]="recurso.codigo">
+          {{recurso.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -43,10 +43,11 @@
 
   <div class="col-sm-4">
     <p>Gerencia Origen</p>
-    <mat-form-field appearance="fill" class="tamaño">
-      <mat-label>gerencia</mat-label>
-      <input matInput formControlName="gerenciaOrigen">
-    </mat-form-field>
+    <mat-select (selectionChange)="saveManagement($event)" name="fill" >
+      <mat-option *ngFor="let recurso of management" [value]="recurso.codigo" [id]="recurso.nombre">
+        {{recurso.nombre}}
+      </mat-option>
+    </mat-select>
   </div>
 
   <div class="col-sm-4">

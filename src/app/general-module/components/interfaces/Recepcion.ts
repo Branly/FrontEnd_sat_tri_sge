@@ -18,27 +18,29 @@ export interface Expedient {
 }
 
 export interface InformationExpedient {
-  impuesto: String;
-  estado: String;
-  folios: Number;
-  fecha_ingreso: Date;
-  observacion: String;
-  especialista: String;
-  tipo_caso: String;
-  tipo_recurso: String;
-  profesional: String;
-  recurso: String;
-  no_expediente: String;
-  no_expediente_tributa: String;
-  id_agenda: String;
-  nit_contribuyente: String;
-  gerencia_origen: String;
-  cantidad_ajustes: Number;
-  fecha_preincripcion: Date;
-  direccion_fiscal: String;
-  fecha_interposicion: Date;
-  subTipo_caso: String;
-  idCasoEspecial: Number;
+  nombre: String,
+  folios: Number,
+  impuesto: String,
+  monto: Number,
+  estado: String,
+  direccion_fiscal: String,
+  nit_contribuyente: String,
+  cantidad_ajustes: Number,
+  fecha_interposicion: Date,
+  fecha_preincripcion: Date,
+  gerencia_origen: String,
+  no_expediente: String,
+  tipo_recurso: String,
+  id_agenda: String,
+  observacion: String,
+  subTipo_caso: String,
+  tipo_caso: String,
+  especialista: String,
+  recurso: String,
+  fecha_ingreso: Date,
+  profesional: String,
+  no_expediente_tributa: String
+  idCasoEspecial: Number
 }
 
 export interface createExpedient{
@@ -48,7 +50,7 @@ export interface createExpedient{
   fechaModifica: Date;
   fechaPreincripcion: Date;
   folios: Number;
-  gerenciaOrigen: String;
+  idGerenciaOrigen: Number;
   idAgenda: String;
   idEstado: Number;
   idProces: Number;
@@ -59,6 +61,7 @@ export interface createExpedient{
   noExpedienteTributa: String;
   tipoRecurso: Number;
   usuarioModifica: String;
+  resolucionEntrada: String
 }
 
 export interface Loan{

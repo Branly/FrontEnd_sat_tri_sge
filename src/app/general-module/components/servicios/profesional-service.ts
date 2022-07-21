@@ -15,7 +15,7 @@ import { Providens } from '../interfaces/profesional';
     ){}
 
     getExpendients(): Observable<Expedient[]>{
-        return this.serviceProfesional.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Files/23842353/28, 30, 31`);
+        return this.serviceProfesional.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Files/105259977/28, 30, 31`);
     }
 
     getExpendient(file:String): Observable<InformationExpedient>{

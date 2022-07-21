@@ -1,22 +1,25 @@
-import { Complement } from './../../../general-module/components/interfaces/centralizador';
-import { element } from 'protractor';
-import { Expedient, InformationExpedient } from './../../../general-module/components/interfaces/Recepcion';
-import { CentralizadorService } from './../../../general-module/components/servicios/centralizador-service';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSelectChange } from '@angular/material/select';
+import { Complement } from './../../../general-module/components/interfaces/centralizador'
+import { element } from 'protractor'
+import {
+  Expedient,
+  InformationExpedient
+} from './../../../general-module/components/interfaces/Recepcion'
+import { CentralizadorService } from './../../../general-module/components/servicios/centralizador-service'
+import { MatPaginator } from '@angular/material/paginator'
+import { MatTableDataSource } from '@angular/material/table'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { MatSelectChange } from '@angular/material/select'
 import { ProfesionaleService } from './../../../general-module/components/servicios/profesional-service'
 
 interface Data {
-  codigo: number;
-  nombre: string;
+  codigo: number
+  nombre: string
 }
 
 interface DataImpost {
-  codigo: number;
-  nombre: string;
-  monto: number;
+  codigo: number
+  nombre: string
+  monto: number
 }
 
 @Component({
@@ -24,15 +27,13 @@ interface DataImpost {
   templateUrl: './centralizadorentrada-expediente.component.html',
   styleUrls: ['./centralizadorentrada-expediente.component.css']
 })
-
 export class CentralizadorentradaExpedienteComponent implements OnInit {
+  mostrarTablaPadre: boolean = false
+  detalle: boolean = false
 
-  mostrarTablaPadre: boolean = false;
-  detalle: boolean = false;
-
-  impost: string = "";
-  idImpost: number =0;
-  mont: number = 0;
+  impost: string = ''
+  idImpost: number = 0
+  mont: number = 0
 
   file: InformationExpedient = {
     impuesto: '',
@@ -54,12 +55,14 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     direccion_fiscal: '',
     fecha_interposicion: new Date(),
     subTipo_caso: '',
-    no_expediente_tributa: "",
-    idCasoEspecial: 0
-  };
+    no_expediente_tributa: '',
+    idCasoEspecial: 0,
+    monto: 0,
+    nombre: ''
+  }
 
-  info: Expedient[] = [];
-/*  data: Expedient = {
+  info: Expedient[] = []
+  /*  data: Expedient = {
     no_expediente_tributa: "",
     tipo_recurso: "",
     nit_contribuyente: "",
@@ -79,72 +82,87 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
 }; */
 
   displayedColumns: string[] = [
-    'nombre', 'nit', 'fecha_ingreso', 'no_expediente_tributa',
-    'fecha_preincripcion', 'estado', 'profesional','acciones'
-  ];
-  dataSource = new MatTableDataSource();
+    'nombre',
+    'nit',
+    'fecha_ingreso',
+    'no_expediente_tributa',
+    'fecha_preincripcion',
+    'estado',
+    'profesional',
+    'acciones'
+  ]
+  dataSource = new MatTableDataSource()
   DisplayImpost: string[] = ['impuesto', 'monto', 'acciones']
-  dataImpost = new MatTableDataSource();
+  dataImpost = new MatTableDataSource()
 
-  especial: Data[] =[
-    {codigo : 1, nombre : "Si"},
-    {codigo: 2, nombre : "No"}
-  ];
+  especial: Data[] = [
+    { codigo: 1, nombre: 'Si' },
+    { codigo: 2, nombre: 'No' }
+  ]
 
-  tipo: Data[] = [];
-  subTipo: Data[] = [];
-  impuesto: Data[] = [];
-  currentImpost: DataImpost[] =[];
+  tipo: Data[] = []
+  subTipo: Data[] = []
+  impuesto: Data[] = []
+  currentImpost: DataImpost[] = []
 
-  @ViewChild('MatPaginator1') set matPaginator(mp1: MatPaginator) {
-    this.dataSource.paginator = mp1;
+  @ViewChild('MatPaginator1') set matPaginator (mp1: MatPaginator) {
+    this.dataSource.paginator = mp1
   }
 
-  constructor(private CentralizadorService: CentralizadorService,
-    private ProfesionaleService: ProfesionaleService) { }
+  constructor (
+    private CentralizadorService: CentralizadorService,
+    private ProfesionaleService: ProfesionaleService
+  ) {}
 
-  ngOnInit(): void {
-    this.Expedient();
-    this.newType();
-    this.impostType();
-    this.dataImpost.data = this.currentImpost;
+  ngOnInit (): void {
+    this.Expedient()
+    this.newType()
+    this.impostType()
+    this.dataImpost.data = this.currentImpost
   }
 
-  Expedient(){
-    this.CentralizadorService.getExpendient().toPromise().then(res => {
-      this.dataSource.data = res;
-    })
+  Expedient () {
+    this.CentralizadorService.getExpendient('87634457')
+      .toPromise()
+      .then(res => {
+        this.dataSource.data = res
+      })
   }
 
-  showInformation(){
-    this.mostrarTablaPadre = !this.mostrarTablaPadre;
-
+  showInformation () {
+    this.mostrarTablaPadre = !this.mostrarTablaPadre
   }
-  newType(){
-    this.CentralizadorService.getType(7).toPromise().then(res => {
-      this.tipo = res;
-    })
-  }
-
-  newSubType(tipo: MatSelectChange){
-     this.CentralizadorService.getSubType(tipo.value).toPromise().then(res => {
-      this.subTipo = res;
-    });
-    this.file.tipo_caso = tipo.value;
+  newType () {
+    this.CentralizadorService.getType(7)
+      .toPromise()
+      .then(res => {
+        this.tipo = res
+      })
   }
 
-  getSubType(subType:MatSelectChange){
-    this.file.subTipo_caso = subType.value;
+  newSubType (tipo: MatSelectChange) {
+    this.CentralizadorService.getSubType(tipo.value)
+      .toPromise()
+      .then(res => {
+        this.subTipo = res
+      })
+    this.file.tipo_caso = tipo.value
   }
 
-  getCase(caso:MatSelectChange){
-    this.file.idCasoEspecial = caso.value;
+  getSubType (subType: MatSelectChange) {
+    this.file.subTipo_caso = subType.value
   }
 
-  impostType(){
-    this.CentralizadorService.getType(9).toPromise().then(res => {
-      this.impuesto = res;
-    })
+  getCase (caso: MatSelectChange) {
+    this.file.idCasoEspecial = caso.value
+  }
+
+  impostType () {
+    this.CentralizadorService.getType(9)
+      .toPromise()
+      .then(res => {
+        this.impuesto = res
+      })
   }
 
   /* informationExpedient(expedient: String){
@@ -157,37 +175,41 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     this.newComplement();
   } */
 
-  saveImpost(impuesto:any){
-    this.impost = impuesto.source.selected.viewValue;
-    this.idImpost = impuesto.source.selected.value;
+  saveImpost (impuesto: any) {
+    this.impost = impuesto.source.selected.viewValue
+    this.idImpost = impuesto.source.selected.value
   }
 
-  save(monto:string){
-    this.currentImpost.push(
-      {codigo: this.idImpost, nombre: this.impost, monto: +monto}
-    );
-      this.dataImpost.data = this.currentImpost;
+  save (monto: string) {
+    this.currentImpost.push({
+      codigo: this.idImpost,
+      nombre: this.impost,
+      monto: +monto
+    })
+    this.dataImpost.data = this.currentImpost
   }
 
-  delete(name:string){
-    let aux: DataImpost[] = [];
-    this.currentImpost.forEach(elemet =>
-      {if (elemet.nombre != name) {
-        aux.push(
-          {codigo:elemet.codigo, nombre:elemet.nombre, monto: elemet.monto}
-        );
-      }}
-      );
-      this.dataImpost.data = aux;
-      this.currentImpost = aux;
-      aux = [];
+  delete (name: string) {
+    let aux: DataImpost[] = []
+    this.currentImpost.forEach(elemet => {
+      if (elemet.nombre != name) {
+        aux.push({
+          codigo: elemet.codigo,
+          nombre: elemet.nombre,
+          monto: elemet.monto
+        })
+      }
+    })
+    this.dataImpost.data = aux
+    this.currentImpost = aux
+    aux = []
   }
 
-/*   pastToInformation(){
+  /*   pastToInformation(){
     this.info.forEach(element => this.data = element)
     console.log(this.data)
   } */
-  button(){
+  button () {
     console.log(this.info)
   }
 
@@ -195,68 +217,59 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     this.ProfesionaleService.getExpendient(noExedient)
       .toPromise()
       .then(res => {
-        this.file.impuesto = res.impuesto
-        this.file.estado = res.estado
-        this.file.folios = res.folios
-        this.file.fecha_ingreso = res.fecha_ingreso
-        this.file.observacion = res.observacion
-        this.file.tipo_caso = res.tipo_caso
-        this.file.recurso = res.recurso
-        this.file.no_expediente = res.no_expediente
-        this.file.nit_contribuyente = res.nit_contribuyente
-        this.file.cantidad_ajustes = res.cantidad_ajustes
-        this.file.direccion_fiscal = res.direccion_fiscal
-        this.file.fecha_interposicion = res.fecha_interposicion
-        this.file.subTipo_caso = res.subTipo_caso
-        this.file.gerencia_origen = res.gerencia_origen
-        this.file.no_expediente_tributa = res.no_expediente_tributa
-        this.file.tipo_recurso = res.tipo_recurso
+        this.file = res
+        this.file.no_expediente_tributa = noExedient.toString()
+        console.log(res)
+        this.showInformation()
       })
-    console.log(this.file);
-    this.showInformation();
   }
 
-  newImpost(){
-    this.currentImpost.forEach(element =>
-      {
-        console.log(element);
-        this.CentralizadorService.setImpost(element.codigo, element.monto, this.file.no_expediente_tributa).
-        toPromise().
-        then(data => console.log(data));
-      }
-      );
+  newImpost () {
+    this.currentImpost.forEach(element => {
+      console.log(element)
+      this.CentralizadorService.setImpost(
+        element.codigo,
+        element.monto,
+        this.file.no_expediente_tributa
+      )
+        .toPromise()
+        .then(data => {
+          console.log(data)
+        })
+
+    })
   }
 
-  newComplement(){
+  newComplement () {
     if (this.currentImpost.length > 0) {
       var complement: Complement = {
         complejidad: 0,
         fechaInterposicion: this.file.fecha_interposicion,
         fechaModifica: new Date(),
         idCasoEspecial: this.file.idCasoEspecial,
-        ipModifica: "22",
-        nitColaboradorConfronto: "",
+        ipModifica: '22',
+        nitColaboradorConfronto: '',
         noExpedienteTributa: this.file.no_expediente_tributa,
         subTipoCaso: +this.file.subTipo_caso,
         tipoCaso: +this.file.tipo_caso,
-        usuarioModifica: ""
+        usuarioModifica: ''
       }
-      this.CentralizadorService.setComplement(complement).
-      toPromise().then(data => console.log(data));
+      this.CentralizadorService.setComplement(complement)
+        .toPromise()
+        .then(data => console.log(data));
       this.newImpost();
-      this.setState();
+      this.setState(complement.noExpedienteTributa);
       this.Expedient();
       this.showInformation();
-    }else{
-      alert("no Tiene Agregado ningun Impuesto");
+    } else {
+      alert('no Tiene Agregado ningun Impuesto')
     }
-
   }
-  setState(){
-    this.CentralizadorService.setProfessional(this.file.no_expediente_tributa).
-    toPromise().then(res => {
-      console.log(res);
-    })
+  setState (noFile: String) {
+    this.CentralizadorService.setProfessional(noFile)
+      .toPromise()
+      .then(res => {
+        console.log(res)
+      })
   }
-
 }
