@@ -96,8 +96,8 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
   dataImpost = new MatTableDataSource()
 
   especial: Data[] = [
-    { codigo: 1, nombre: 'Si' },
-    { codigo: 2, nombre: 'No' }
+    { codigo: 13, nombre: 'Si' },
+    { codigo: 14, nombre: 'No' }
   ]
 
   tipo: Data[] = []

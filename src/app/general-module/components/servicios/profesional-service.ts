@@ -14,8 +14,8 @@ import { Providens } from '../interfaces/profesional';
         private serviceProfesional: GeneralService
     ){}
 
-    getExpendients(): Observable<Expedient[]>{
-        return this.serviceProfesional.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Files/105259977/28, 30, 31`);
+    getExpendients(nit:String, estado:String): Observable<Expedient[]>{
+        return this.serviceProfesional.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Files/${nit}/${estado}`);
     }
 
     getExpendient(file:String): Observable<InformationExpedient>{
@@ -33,6 +33,10 @@ import { Providens } from '../interfaces/profesional';
 
   setElaborateProvidens(file:String): Observable<String>{
     return this.serviceProfesional.putData<String, String>(environment.API_IFI_SIPF,`/Files/StateElaborateProvidence/${file}`)
+  }
+
+  setStateSupervisorReview(file:String): Observable<String>{
+    return this.serviceProfesional.putData<String, String>(environment.API_IFI_SIPF,`/Files/StateSupervisorReview/${file}`)
   }
 
   }

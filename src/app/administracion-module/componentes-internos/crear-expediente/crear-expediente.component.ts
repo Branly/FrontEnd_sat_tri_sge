@@ -14,7 +14,7 @@ export class CrearExpedienteComponent implements OnInit {
   mostrarFechas: boolean = true
   crearExp!: FormGroup
   recursos: Data[] = [
-    { codigo: 9, nombre: 'Rebocatoria' },
+    { codigo: 9, nombre: 'Revocatoria' },
     { codigo: 10, nombre: 'Apelación' }
   ]
   management: Data[] = []

@@ -83,7 +83,7 @@ export class ProfesionalExpedienteComponent implements OnInit {
   }
 
   Expedients () {
-    this.ProfesionaleService.getExpendients()
+    this.ProfesionaleService.getExpendients("105259977", "28, 30, 31")
       .toPromise()
       .then(res => {
         this.dataSource.data = res
@@ -131,6 +131,12 @@ export class ProfesionalExpedienteComponent implements OnInit {
 
       disableClose: true,
       data: this.data
+    })
+  }
+
+  setStateSupervisorReview(){
+    this.ProfesionaleService.setStateSupervisorReview(this.file.no_expediente_tributa).toPromise().then(res =>{
+      console.log(res);
     })
   }
 }
