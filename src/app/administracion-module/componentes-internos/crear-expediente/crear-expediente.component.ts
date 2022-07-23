@@ -1,3 +1,5 @@
+import { FileUtils } from './../../../general-module/components/util/file-utils';
+import { DocumentosExpedienteService } from './../../../general-module/components/servicios/documentos-expediente-service';
 import { Data } from './../../../general-module/components/interfaces/centralizador'
 import { createExpedient } from './../../../general-module/components/interfaces/Recepcion'
 import { RecepcionService } from './../../../general-module/components/servicios/recepcion-service'
@@ -21,7 +23,8 @@ export class CrearExpedienteComponent implements OnInit {
 
   constructor (
     public dialogRef: MatDialog,
-    private RecepcionService: RecepcionService
+    private RecepcionService: RecepcionService,
+    private DocumentosExpedienteService: DocumentosExpedienteService,
   ) {
     this.crearExp = new FormGroup({
       Nit: new FormControl('', Validators.required),
@@ -49,7 +52,7 @@ export class CrearExpedienteComponent implements OnInit {
     this.crearExp.get('tipoRecurso')?.setValue(recursed.source.selected.value)
   }
 
-  createExpedient () {
+  createExpedient() {
     var newExpdiente: createExpedient = {
       cantidadAjustes: this.crearExp.get('cantidadAjustes')?.value,
       direccionFiscal: this.crearExp.get('direccionFiscal')?.value,
@@ -91,4 +94,14 @@ export class CrearExpedienteComponent implements OnInit {
   saveManagement (management: any) {
     this.crearExp.get('idGerenciaOrigen')?.setValue(management.source.selected.value);
   }
+
+    async getRejection() {
+        await this.createExpedient()
+        this.DocumentosExpedienteService.getRejection(this.crearExp.value.noExpediente)
+        .subscribe(
+          (data) => {
+          FileUtils.downloadFile(data, `Boleta de Rechazo ${this.crearExp.value.noExpediente}.docx`)
+        })
+      }
+
 }
