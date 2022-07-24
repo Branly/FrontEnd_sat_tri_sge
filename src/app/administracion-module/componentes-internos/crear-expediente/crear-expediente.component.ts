@@ -71,7 +71,8 @@ export class CrearExpedienteComponent implements OnInit {
       noExpedienteTributa: '',
       tipoRecurso: this.crearExp.get('tipoRecurso')?.value,
       usuarioModifica: '',
-      resolucionEntrada: this.crearExp.get('recurso')?.value
+      resolucionEntrada: this.crearExp.get('recurso')?.value,
+      nombre: this.crearExp.get('nombre')?.value
     }
     console.log(newExpdiente)
     this.RecepcionService.setExpedient(newExpdiente)

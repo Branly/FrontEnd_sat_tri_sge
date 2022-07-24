@@ -236,7 +236,6 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
         .then(data => {
           console.log(data)
         })
-
     })
   }
 
@@ -256,15 +255,18 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
       }
       this.CentralizadorService.setComplement(complement)
         .toPromise()
-        .then(data => console.log(data));
-      this.newImpost();
-      this.setState(complement.noExpedienteTributa);
-      this.Expedient();
-      this.showInformation();
+        .then(data => {
+          console.log(data)
+          this.newImpost()
+          this.setState(complement.noExpedienteTributa)
+          this.Expedient()
+          this.showInformation()
+        })
     } else {
       alert('no Tiene Agregado ningun Impuesto')
     }
   }
+
   setState (noFile: String) {
     this.CentralizadorService.setProfessional(noFile)
       .toPromise()

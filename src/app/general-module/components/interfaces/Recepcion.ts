@@ -61,7 +61,8 @@ export interface createExpedient{
   noExpedienteTributa: String;
   tipoRecurso: Number;
   usuarioModifica: String;
-  resolucionEntrada: String
+  resolucionEntrada: String;
+  nombre: String;
 }
 
 export interface Loan{

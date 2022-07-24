@@ -48,7 +48,7 @@
                 <mat-icon>more_horiz</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item type="button" title="request" color="primary" (click)="selectFile(element.no_expediente_tributa)">
+                <button mat-menu-item type="button" title="request" color="primary" >
                   <mat-icon class="iconos">request</mat-icon>
                   <span> Revison </span>
                 </button>
@@ -82,15 +82,15 @@
 
 
         <mat-dialog-actions align="end">
-          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="StateSpecialistReview()">
+          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" >
             <mat-icon>check_circle_outline</mat-icon>
             Aceptar
           </button>
-          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="StateProfessionalCorrection()">
+          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" >
             <mat-icon>report_problem</mat-icon>
             Rechazar
           </button>
-          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="showInformation()">
+          <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" >
             <mat-icon>settings_backup_restore</mat-icon>
             Regresar
           </button>
