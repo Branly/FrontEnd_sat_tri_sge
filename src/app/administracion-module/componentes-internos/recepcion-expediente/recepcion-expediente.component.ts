@@ -77,7 +77,8 @@ export class RecepcionExpedienteComponent implements OnInit {
               direccion: this.direccion,
               ajustes: this.ajustes
             }
-    });
+    }).afterClosed().toPromise().then(res => this.Expedient()); 
+    
   }
 
   ngOnInit(): void {
