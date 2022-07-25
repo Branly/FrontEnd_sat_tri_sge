@@ -15,6 +15,7 @@ import { ListaColaboradorComponent } from './componentes-internos/lista-colabora
 import { ComentarioProvidenciaComponent } from './componentes-internos/comentario-providencia/comentario-providencia.component';
 import { SupervisorExpedienteComponent } from './componentes-internos/supervisor-expediente/supervisor-expediente.component';
 import { EspecialistaExpedienteComponent } from './componentes-internos/especialista-expediente/especialista-expediente.component';
+import { PruebaComponent } from './componentes-internos/prueba/prueba.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { EspecialistaExpedienteComponent } from './componentes-internos/especial
         ComentarioProvidenciaComponent,
         SupervisorExpedienteComponent,
         EspecialistaExpedienteComponent,
+        PruebaComponent,
     ],
     imports: [
         CommonModule,

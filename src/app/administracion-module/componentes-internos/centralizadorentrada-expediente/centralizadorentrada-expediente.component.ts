@@ -128,10 +128,19 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
         this.dataSource.data = res
       })
   }
-
+  /**
+   * @description Oculta la tabla con informacion general y muestra la informacion de un expediente
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   showInformation () {
     this.mostrarTablaPadre = !this.mostrarTablaPadre
   }
+  /**
+   * @description Trae los tipos de Temas que hay
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   newType () {
     this.CentralizadorService.getType(7)
       .toPromise()
@@ -139,7 +148,11 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
         this.tipo = res
       })
   }
-
+  /**
+   * @description Trae los Subtipos de un Tema
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   newSubType (tipo: MatSelectChange) {
     this.CentralizadorService.getSubType(tipo.value)
       .toPromise()
@@ -148,15 +161,28 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
       })
     this.file.tipo_caso = tipo.value
   }
-
+  /**
+   * @description Toma el valor del SubTipo para gaurar en la BDD
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   getSubType (subType: MatSelectChange) {
     this.file.subTipo_caso = subType.value
   }
-
+  /**
+   * @description Obtiene el valos del tipo de caso que es, si es especial o no
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   getCase (caso: MatSelectChange) {
     this.file.idCasoEspecial = caso.value
   }
 
+  /**
+   * @description Trae todos los impuestos disponibles
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   impostType () {
     this.CentralizadorService.getType(9)
       .toPromise()
@@ -174,12 +200,21 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     this.pastToInformation();
     this.newComplement();
   } */
-
+  /**
+   * @description Guarda el nombre y el valor del impuesto
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   saveImpost (impuesto: any) {
     this.impost = impuesto.source.selected.viewValue
     this.idImpost = impuesto.source.selected.value
   }
 
+  /**
+   * @description Pasa los daros del impuesto a la tabla que se muestra
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   save (monto: string) {
     this.currentImpost.push({
       codigo: this.idImpost,
@@ -189,6 +224,11 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     this.dataImpost.data = this.currentImpost
   }
 
+  /**
+   * @description Elimina un impuesto de la tabla
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   delete (name: string) {
     let aux: DataImpost[] = []
     this.currentImpost.forEach(elemet => {
@@ -209,10 +249,12 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     this.info.forEach(element => this.data = element)
     console.log(this.data)
   } */
-  button () {
-    console.log(this.info)
-  }
 
+  /**
+   * @description Trae la informacion de un expediente en espesifico
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   expedient (noExedient: String) {
     this.ProfesionaleService.getExpendient(noExedient)
       .toPromise()
@@ -224,6 +266,11 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
       })
   }
 
+  /**
+   * @description Guarda en la BDD los impuestos que se muestran en la tabla
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   newImpost () {
     this.currentImpost.forEach(element => {
       console.log(element)
@@ -239,6 +286,11 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     })
   }
 
+  /**
+   * @description Guarda la informacion que ingresa el centralizador de entrada
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   newComplement () {
     if (this.currentImpost.length > 0) {
       var complement: Complement = {
@@ -267,11 +319,21 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
     }
   }
 
+  /**
+   * @description Cambia el estado del expediente a pendente de asignacion de Profecional
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   setState (noFile: String) {
     this.CentralizadorService.setProfessional(noFile)
       .toPromise()
       .then(res => {
         console.log(res)
       })
+  }
+
+  public applyFilter (event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLowerCase()
   }
 }

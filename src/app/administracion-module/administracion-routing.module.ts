@@ -1,3 +1,5 @@
+import { PruebaComponent } from './componentes-internos/prueba/prueba.component';
+import { EspecialistaExpedienteComponent } from './componentes-internos/especialista-expediente/especialista-expediente.component';
 import { SupervisorExpedienteComponent } from './componentes-internos/supervisor-expediente/supervisor-expediente.component';
 import { SecretarioAgendaComponent } from './componentes-internos/secretario-agenda/secretario-agenda.component';
 import { CoordinadorExpedienteComponent } from './componentes-internos/coordinador-expediente/coordinador-expediente.component';
@@ -20,7 +22,9 @@ const routes: Routes = [
             {path: 'profesional', component: ProfesionalExpedienteComponent},
             {path: 'coordinador', component: CoordinadorExpedienteComponent},
             {path: 'secretario', component: SecretarioAgendaComponent},
-            {path: 'supervisor', component: SupervisorExpedienteComponent}
+            {path: 'supervisor', component: SupervisorExpedienteComponent},
+            {path: 'especialista', component: EspecialistaExpedienteComponent},
+            {path: 'prueba', component: PruebaComponent}
         ]
     },
 ];

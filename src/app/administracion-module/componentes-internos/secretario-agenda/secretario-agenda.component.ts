@@ -24,10 +24,10 @@ export class SecretarioAgendaComponent implements OnInit {
   constructor(private SecretarioService: SecretarioService) { }
 
   ngOnInit(): void {
-    this.Expedient();
+    this.diary();
   }
 
-  Expedient(){
+  diary(){
     this.SecretarioService.getDiary().toPromise().then(res => {
       console.log(res);
       this.dataSource.data = res;
@@ -35,4 +35,8 @@ export class SecretarioAgendaComponent implements OnInit {
     })
   }
 
+  public applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

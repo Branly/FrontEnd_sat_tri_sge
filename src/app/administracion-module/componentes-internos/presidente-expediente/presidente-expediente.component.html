@@ -2,6 +2,10 @@
   <mat-card-title class="mt-2 main-title">Reporte de Presidente Tributario</mat-card-title>
   <div><br>
   <mat-card>
+    <mat-form-field appearance="standard">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="">
+    </mat-form-field>
       <ng-container>
 
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

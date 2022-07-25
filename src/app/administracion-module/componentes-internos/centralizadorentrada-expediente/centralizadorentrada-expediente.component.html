@@ -2,12 +2,16 @@
   <mat-card-title class="main-title">Centralizador de Entrada</mat-card-title>
 
   <mat-card>
-    <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary">
-      <mat-icon>add</mat-icon>
-      Reporte
-  </button>
     <!--Tabla de Expedientes-->
     <ng-container #VistaExpedientes *ngIf="!mostrarTablaPadre">
+      <mat-form-field appearance="standard">
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="">
+      </mat-form-field>
+      <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary">
+        <mat-icon>add</mat-icon>
+        Reporte
+    </button>
       <ng-container>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width:100%">
           <!-- Name Column -->

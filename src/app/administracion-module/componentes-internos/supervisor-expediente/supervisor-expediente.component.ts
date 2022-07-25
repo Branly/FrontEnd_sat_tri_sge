@@ -65,4 +65,9 @@ export class SupervisorExpedienteComponent implements OnInit {
       .toPromise()
       .then(res => console.log(res))
   }
+
+  public applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
