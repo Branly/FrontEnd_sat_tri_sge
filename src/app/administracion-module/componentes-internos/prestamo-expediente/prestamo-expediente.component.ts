@@ -3,8 +3,9 @@ import { Loan } from './../../../general-module/components/interfaces/Recepcion'
 import { RecepcionService } from './../../../general-module/components/servicios/recepcion-service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Data } from './../../../general-module/components/interfaces/centralizador'
 
-export interface Data {
+export interface DataIn {
   usuario: string;
   gerencia: string;
   departamento: string;
@@ -26,9 +27,11 @@ export class PrestamoExpedienteComponent implements OnInit {
 
   gerencias: Infrmation[] = [];
   crearPrestamo!: FormGroup;
-
+  management: Data[] = []
+  selectedFiles:any;
+  name:  String = "";
   constructor(public dialogRef: MatDialogRef<PrestamoExpedienteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Data,
+    @Inject(MAT_DIALOG_DATA) public data: DataIn,
     private RecepcionService: RecepcionService
   ) {
     this.crearPrestamo = new FormGroup({
@@ -49,6 +52,7 @@ export class PrestamoExpedienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getManagement();
   }
 
 
@@ -72,5 +76,25 @@ export class PrestamoExpedienteComponent implements OnInit {
         console.log(res)
       })
   }
+  getManagement () {
+    this.RecepcionService.getType(13)
+      .toPromise()
+      .then(res => {
+        this.management = res
+      })
+  }
+
+  selectFile(event:any) {
+    console.log(event);
+    try {
+      this.selectedFiles = event.target.files;
+      this.name = this.selectedFiles.item(0).name;
+    } catch (error) {
+      console.log(error)
+      this.name = "";
+    }
+
+
+}
 
 }

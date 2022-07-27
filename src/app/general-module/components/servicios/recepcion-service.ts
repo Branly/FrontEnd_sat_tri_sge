@@ -36,6 +36,10 @@ export class RecepcionService {
     return this.serviceRecepcion.getData<Data[]>(environment.API_IFI_SIPF,`CatData/${tipo}`);
   }
 
+  getObservation(): Observable<Data[]>{
+    return this.serviceRecepcion.getData<Data[]>(environment.API_IFI_SIPF,`CatData/Observation`);
+  }
+
 
   setState(file: String): Observable<String>{
     return this.serviceRecepcion.putData<String, String>(environment.API_IFI_SIPF,`/Files/StateInformationComfirmation/${file}`)

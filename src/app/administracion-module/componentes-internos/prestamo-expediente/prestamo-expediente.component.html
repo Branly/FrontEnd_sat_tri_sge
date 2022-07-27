@@ -1,6 +1,5 @@
-<h1 mat-dialog-title>Nuevo Prestamoo</h1>
+<h1 mat-dialog-title>Nuevo Prestamo</h1>
 <div mat-dialog-content>
-
   <form [formGroup]="crearPrestamo" class="crearExpediente">
     <div class="row">
       <div class="col-sm-4">
@@ -9,10 +8,19 @@
           <input matInput formControlName="Nit" />
         </mat-form-field>
       </div>
+
       <div class="col-sm-4">
-        <p>Gerencia</p>
-        <mat-form-field appearance="fill">
-          <input matInput formControlName="gerencia" />
+        <p>Gerencia Origen</p>
+        <mat-form-field appearance="fill" class="tamaño">
+          <mat-label>Gerencia Origen</mat-label>
+          <mat-select formControlName="gerencia" name="fill">
+            <mat-option
+              *ngFor="let recurso of management"
+              [value]="recurso.codigo"
+            >
+              {{ recurso.nombre }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div class="col-sm-4">
@@ -24,20 +32,40 @@
       <div class="col-sm-4">
         <p>Comentario</p>
         <mat-form-field appearance="fill">
-          <textarea cols="100" rows="3" matInput formControlName="departamento" class="comentario"></textarea>
+          <textarea
+            cols="100"
+            rows="3"
+            matInput
+            formControlName="departamento"
+            class="comentario"
+          ></textarea>
         </mat-form-field>
       </div>
+
       <div class="col-sm-4">
-        <div id="box2">
+        <p>Seleccione un Archivo</p>
+        <mat-form-field appearance="fill">
+          <mat-label *ngIf="selectedFiles; else newFile">{{
+              name
+          }}</mat-label>
+          <ng-template #newFile>
+            <mat-label>Elegir archivo</mat-label>
+          </ng-template>
+          <input matInput disabled />
+          <button mat-icon-button matSuffix (click)="fileInput.click()">
+            <mat-icon>attach_file</mat-icon>
+          </button>
+          <input hidden (change)="selectFile($event)" #fileInput type="file" id="file" />
+        </mat-form-field>
+        <!--         <div id="box2">
           <button id="selectButton" mat-raised-button (click)="fileInput.click()">
             Seleccione Archivo
           </button>
           <input #fileInput type="file" hidden multiple />
           <span></span>
-        </div>
+        </div> -->
       </div>
     </div>
-
 
     <mat-dialog-actions align="end">
       <button mat-button (click)="onNoClick()">

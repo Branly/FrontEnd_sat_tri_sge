@@ -15,7 +15,7 @@ export class SecretarioAgendaComponent implements OnInit {
     'agenda', 'asunto', 'Fecha', 'acciones'
   ];
   dataSource = new MatTableDataSource();
-  mostrarTablaPadre = true;
+  mostrarTablaPadre = false;
 
   @ViewChild('MatPaginator1') set matPaginator(mp1: MatPaginator) {
     this.dataSource.paginator = mp1;

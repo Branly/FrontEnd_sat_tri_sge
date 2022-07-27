@@ -46,6 +46,11 @@ export class CoordinadorExpedienteComponent implements OnInit {
     })
   }
 
+    /**
+   * @description Obtiene una lista de profesionales segun su tribunal
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   getProfessional(rol:Number, tipo:String, file: String){
     this.collaborator = [];
     this.CoordinadorService.getProfessional(rol, tipo).toPromise().then(res => {
@@ -58,7 +63,11 @@ export class CoordinadorExpedienteComponent implements OnInit {
     console.log(this.collaborator);
     this.newAssignment();
   }
-
+      /**
+   * @description Asigna un Profesional a un Expediente
+   * @author acdraguay (Cristian Raguay)
+   * @since 13/07/2022
+   */
   newAssignment(): void {
     const dialogRef = this.dialog.open(ListaColaboradorComponent, {
       width: '300px',
