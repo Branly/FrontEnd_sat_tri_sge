@@ -13,6 +13,7 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 export class EspecialistaExpedienteComponent implements OnInit {
   mostrarTablaPadre: Boolean = false;
   mostrarTablaAgenda: Boolean = false;
+  mostrarTablaExpedientes: Boolean = false;
   noFile: String = '';
   displayedColumns: string[] = [
     'noexpedientetributa',
@@ -24,9 +25,20 @@ export class EspecialistaExpedienteComponent implements OnInit {
     'profecional',
     'acciones'
   ]
+  displayedColumns2: string[] = [
+    'noexpedientetributa',
+    'nombrecontribuyente',
+    'nit',
+    'fechaingreso',
+    'Tiempopreinscripcion',
+    'estado',
+    'profecional',
+    'acciones'
+  ]
   dataSource = new MatTableDataSource()
+  dataSource2 = new MatTableDataSource()
   diaryColumns: string[] = [
-    'agenda', 'asunto', 'Fecha', 'acciones'
+    'agenda', 'asunto', 'fecha', 'acciones'
   ];
   dataDiary = new MatTableDataSource();
   @ViewChild('MatPaginator1') set matPaginator (mp1: MatPaginator) {
@@ -38,6 +50,7 @@ export class EspecialistaExpedienteComponent implements OnInit {
 
   ngOnInit (): void {
     this.Expedients();
+    this.diary();
   }
 
   Expedients () {
@@ -90,7 +103,7 @@ export class EspecialistaExpedienteComponent implements OnInit {
    * @since 25/07/2022
    */
   setStatePendingDiary(file:String){
-    this.especialistaService.setStatePendingDiary(file).toPromise().then(res => console.log(res));
+    this.especialistaService.setStatePendingDiary(file).toPromise().then(res => this.Expedients());
   }
 
     /**
@@ -108,10 +121,23 @@ export class EspecialistaExpedienteComponent implements OnInit {
    * @since 25/07/2022
    */
   diary(){
-    this.SecretarioService.getDiary().toPromise().then(res => {
+    this.especialistaService.getDiary("87654321").toPromise().then(res => {
       console.log(res);
       this.dataDiary.data = res;
-
-    })
+    });
   }
+
+  diaryFile(agenda: String){
+    console.log(agenda);
+      this.especialistaService.getDiaryFile(agenda).toPromise().then(res => {
+      console.log(res);
+      this.dataSource2.data = res;
+      this.showExpedient()
+    });
+  }
+
+  showExpedient(){
+    this.mostrarTablaExpedientes = !this.mostrarTablaExpedientes;
+  }
+
 }

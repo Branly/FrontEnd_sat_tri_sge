@@ -9,6 +9,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthorizationGuard } from "../general-module/seguridad/guards/authorization.guard";
 import { RecepcionExpedienteComponent } from "./componentes-internos/recepcion-expediente/recepcion-expediente.component";
 import { PresidenteExpedienteComponent } from './componentes-internos/presidente-expediente/presidente-expediente.component';
+import { GestionGruposComponent } from './componentes-internos/gestion-grupos/gestion-grupos.component';
 
 const routes: Routes = [
     {
@@ -22,7 +23,8 @@ const routes: Routes = [
             {path: 'coordinador', component: CoordinadorExpedienteComponent},
             {path: 'secretario', component: SecretarioAgendaComponent},
             {path: 'supervisor', component: SupervisorExpedienteComponent},
-            {path: 'especialista', component: EspecialistaExpedienteComponent}
+            {path: 'especialista', component: EspecialistaExpedienteComponent},
+            {path: 'gestiongrupos', component: GestionGruposComponent}
         ]
     },
 ];

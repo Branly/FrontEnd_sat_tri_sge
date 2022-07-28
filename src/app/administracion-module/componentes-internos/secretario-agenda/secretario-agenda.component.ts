@@ -28,7 +28,7 @@ export class SecretarioAgendaComponent implements OnInit {
   }
 
   diary(){
-    this.SecretarioService.getDiary().toPromise().then(res => {
+    this.SecretarioService.getDiary(9).toPromise().then(res => {
       console.log(res);
       this.dataSource.data = res;
 

@@ -13,8 +13,8 @@ import { GeneralService } from './general.service';
         private serviceSecretario: GeneralService
     ){}
 
-    getDiary(): Observable<Diary[]>{
-        return this.serviceSecretario.getData<Diary[]>(environment.API_IFI_SIPF,`Diary`);
+    getDiary(tipo: Number): Observable<Diary[]>{
+        return this.serviceSecretario.getData<Diary[]>(environment.API_IFI_SIPF,`Diary/${tipo}`);
     }
 
   }
