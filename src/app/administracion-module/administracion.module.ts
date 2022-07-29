@@ -16,6 +16,9 @@ import { ComentarioProvidenciaComponent } from './componentes-internos/comentari
 import { SupervisorExpedienteComponent } from './componentes-internos/supervisor-expediente/supervisor-expediente.component';
 import { EspecialistaExpedienteComponent } from './componentes-internos/especialista-expediente/especialista-expediente.component';
 import { GestionGruposComponent } from './componentes-internos/gestion-grupos/gestion-grupos.component';
+import { CrearGrupoComponent } from './componentes-internos/gestion-grupos/crear-grupo/crear-grupo.component';
+import { ModificarGrupoComponent } from './componentes-internos/gestion-grupos/modificar-grupo/modificar-grupo.component';
+import { ProfesionalGrupoComponent } from './componentes-internos/gestion-grupos/profesional-grupo/profesional-grupo.component';
 
 
 
@@ -33,7 +36,10 @@ import { GestionGruposComponent } from './componentes-internos/gestion-grupos/ge
         ComentarioProvidenciaComponent,
         SupervisorExpedienteComponent,
         EspecialistaExpedienteComponent,
-        GestionGruposComponent
+        GestionGruposComponent,
+        CrearGrupoComponent,
+        ModificarGrupoComponent,
+        ProfesionalGrupoComponent
     ],
     imports: [
         CommonModule,

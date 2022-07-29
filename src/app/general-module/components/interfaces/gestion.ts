@@ -1,6 +1,7 @@
 export interface Group{
   id_grupo: String;
   nombre: String;
+  tribunal:String;
 }
 
 export interface CreateGroup{
@@ -11,4 +12,12 @@ export interface CreateGroup{
   nitEncargado: String;
   nombre: String;
   usuarioModifica: String;
+  tipoGrupo:Number;
+}
+
+export interface Collaborator{
+  nit:String,
+  nombre:String,
+  estado:String,
+  puesto:String
 }

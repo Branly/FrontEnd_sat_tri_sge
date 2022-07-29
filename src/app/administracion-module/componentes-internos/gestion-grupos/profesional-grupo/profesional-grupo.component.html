@@ -1,0 +1,79 @@
+<mat-card-title class="main-title">Modificar Profesional</mat-card-title>
+<br>
+<mat-card-title class="main-title">{{nombre}}</mat-card-title>
+<button mat-button type="button" class="btn-container mt-3 mb-2" color="primary">
+  <mat-icon>add</mat-icon>
+  Agregar Profesional
+</button>
+<ng-container>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    style="width: 100%"
+  >
+    <!-- Name Column -->
+    <ng-container matColumnDef="nit">
+      <th mat-header-cell *matHeaderCellDef>NIT</th>
+      <td mat-cell *matCellDef="let element">{{ element.nit }}</td>
+    </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nombre }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="puesto">
+      <th mat-header-cell *matHeaderCellDef>Puesto</th>
+      <td mat-cell *matCellDef="let element">{{ element.puesto }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.estado }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef class="header-table"></th>
+      <td mat-cell class="centrar" *matCellDef="let element">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Acciones"
+        >
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button
+            mat-menu-item
+            type="button"
+            title="request"
+            color="primary"
+          >
+            <mat-icon class="iconos">request</mat-icon>
+            <span> Eliminar </span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    #MatPaginator1="matPaginator"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="showSupervisor()">
+      <mat-icon>close</mat-icon>Regresar
+    </button>
+  </mat-dialog-actions>
+</ng-container>

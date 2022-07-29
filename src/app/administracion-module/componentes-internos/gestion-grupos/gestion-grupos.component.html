@@ -1,12 +1,14 @@
 <div class="my-2 my-sm-3 my-md-4 my-lg-5 mx-2 mx-sm-3 mx-md-4 mx-lg-5">
-  <mat-card-title class="mt-2 main-title">Grupos</mat-card-title>
+
   <div><br>
     <mat-card>
+     <div *ngIf="!tablaPrinsipal">
+      <mat-card-title class="mt-2 main-title">Grupos</mat-card-title>
       <mat-form-field appearance="standard">
         <mat-label>Filtro</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="">
       </mat-form-field>
-        <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" >
+        <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="newGroup()">
             <mat-icon>add</mat-icon>
             Crear Grupo
         </button>
@@ -17,6 +19,11 @@
                 <th mat-header-cell *matHeaderCellDef> Id Grupo</th>
                 <td mat-cell *matCellDef="let element"> {{ element.id_Grupo }}</td>
             </ng-container>
+
+            <ng-container matColumnDef="tribunal">
+              <th mat-header-cell *matHeaderCellDef> Tribunal </th>
+              <td mat-cell *matCellDef="let element"> {{ element.tribunal }}</td>
+          </ng-container>
 
             <ng-container matColumnDef="nombre">
                 <th mat-header-cell *matHeaderCellDef> Nombre </th>
@@ -30,7 +37,7 @@
                     <mat-icon>more_horiz</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
-                    <button mat-menu-item type="button" title="request" color="primary">
+                    <button mat-menu-item type="button" title="request" color="primary" (click)="showSupervisor(element.id_Grupo)">
                       <mat-icon class="iconos">request</mat-icon>
                       <span>Modificar</span>
                     </button>
@@ -49,6 +56,8 @@
         aria-label="Select page of periodic elements">
         </mat-paginator>
         </ng-container>
+     </div>
+     <app-modificar-grupo [igGrupo]="idGrupo" (data)="getSupervisor($event)" *ngIf="tablaPrinsipal"></app-modificar-grupo>
     </mat-card>
   </div>
 </div>

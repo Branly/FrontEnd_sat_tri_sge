@@ -1,0 +1,66 @@
+<h1 mat-dialog-title> Crear Grupo</h1>
+<div mat-dialog-content>
+
+ <form [formGroup]="crearGrupo" class="crearExpediente">
+  <div class="row">
+
+
+    <div class="col-sm-4">
+    <p>Nombre</p>
+    <mat-form-field appearance="fill" class="tamaño">
+      <input matInput formControlName="nombre">
+    </mat-form-field>
+  </div>
+
+   <br>
+
+   <div class="col-sm-4">
+   <p>Estado</p>
+    <mat-form-field appearance="fill" class="tamaño">
+      <mat-select formControlName="estado" name="fill">
+        <mat-option *ngFor="let recurso of state" [value]="recurso.codigo">
+          {{recurso.nombre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+   </div>
+
+   <div class="col-sm-4">
+    <p>Tribuanla</p>
+    <mat-form-field appearance="fill" class="tamaño">
+      <mat-select (selectionChange)="newTribunal($event)" formControlName="tribunal" name="fill">
+        <mat-option *ngFor="let recurso of tribunal" [value]="recurso.codigo">
+          {{recurso.nombre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+   <div class="col-sm-4">
+    <p>Especialista</p>
+    <mat-form-field appearance="fill" class="tamaño">
+      <mat-select formControlName="nitEncargado" name="fill">
+        <mat-option *ngFor="let recurso of specialist" [value]="recurso.nit">
+          {{recurso.nombre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+   </div>
+
+
+
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick()" >
+      <mat-icon>close</mat-icon>Cancelar
+    </button>
+    <button mat-button  cdkFocusInitial (click)="newGroup()">
+      <mat-icon>save</mat-icon>Guardar
+    </button>
+  </mat-dialog-actions>
+ </form>
+ </div>
+
+
+
