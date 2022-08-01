@@ -16,6 +16,8 @@ import { ComentarioProvidenciaComponent } from './componentes-internos/comentari
 import { SupervisorExpedienteComponent } from './componentes-internos/supervisor-expediente/supervisor-expediente.component';
 import { EspecialistaExpedienteComponent } from './componentes-internos/especialista-expediente/especialista-expediente.component';
 import { PruebaComponent } from './componentes-internos/prueba/prueba.component';
+import { AdministracionColaboradoresComponent } from './componentes-internos/administracion-colaboradores/administracion-colaboradores.component';
+import { DialogCrearColaboradorComponent } from './componentes-internos/administracion-colaboradores/dialog-crear-colaborador/dialog-crear-colaborador.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { PruebaComponent } from './componentes-internos/prueba/prueba.component'
         SupervisorExpedienteComponent,
         EspecialistaExpedienteComponent,
         PruebaComponent,
+        AdministracionColaboradoresComponent,
+        DialogCrearColaboradorComponent,
     ],
     imports: [
         CommonModule,

@@ -67,7 +67,13 @@ export class AppComponent implements AfterViewInit, AfterContentChecked {
         title: 'prueba',
         icon: "personal_injury",
         route: 'administracion/prueba'
-      }
+      },
+      {
+        id: 'AM11',
+        title: 'administracioncolaboradores',
+        icon: "personal_injury",
+        route: 'administracion/colaboradores'
+      }      
     ]}
   ];
 
