@@ -1,0 +1,43 @@
+<h1 mat-dialog-title> Modificar Gerencia</h1>
+<div mat-dialog-content>
+
+ <form [formGroup]="modificarGerencia" class="crearExpediente">
+  <div class="row">
+    <div class="col-sm-6">
+    <mat-form-field appearance="fill" class="tamaño">
+      <mat-label>No. Expediente</mat-label>
+      <input matInput formControlName="noExpediente">
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-4">
+    <p>Gerencia Origen</p>
+    <mat-select  name="fill" >
+      <mat-option >
+       
+      </mat-option>
+    </mat-select>
+  </div>
+
+ <!--  <div class="col-sm-4">
+    <p>Gerencia Origen</p>
+    <mat-select (selectionChange)="saveManagement($event)" name="fill" >
+      <mat-option *ngFor="let recurso of management" [value]="recurso.codigo" [id]="recurso.nombre">
+        {{recurso.nombre}}
+      </mat-option>
+    </mat-select>
+  </div> -->
+
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick ()" >
+      <mat-icon>close</mat-icon>Cancelar
+    </button>
+    <button mat-button  cdkFocusInitial>
+      <mat-icon>save</mat-icon>Guardar
+    </button>
+  </mat-dialog-actions>
+ </form>
+
+
+

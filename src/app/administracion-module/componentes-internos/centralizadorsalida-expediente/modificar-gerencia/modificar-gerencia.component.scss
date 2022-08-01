@@ -1,0 +1,25 @@
+.tamaño {
+    width: 300px;
+    height: auto;
+  }
+  
+  .crearExpediente{
+    height: 125px;
+    width: 600px;
+    margin: 15px;
+  }
+
+  
+  /* .row{
+    margin: auto;
+    padding: auto;
+  } */
+  
+  .readonly-wrapper {
+  cursor: not-allowed;
+  }
+  
+  .readonly-wrapper .readonly-block {
+  pointer-events: none;
+  }
+  
