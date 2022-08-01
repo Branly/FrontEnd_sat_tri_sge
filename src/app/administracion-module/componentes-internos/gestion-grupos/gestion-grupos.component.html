@@ -37,7 +37,7 @@
                     <mat-icon>more_horiz</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
-                    <button mat-menu-item type="button" title="request" color="primary" (click)="showSupervisor(element.id_Grupo)">
+                    <button mat-menu-item type="button" title="request" color="primary" (click)="showSupervisor(element.id_Grupo, element.tribunal)">
                       <mat-icon class="iconos">request</mat-icon>
                       <span>Modificar</span>
                     </button>
@@ -57,7 +57,7 @@
         </mat-paginator>
         </ng-container>
      </div>
-     <app-modificar-grupo [igGrupo]="idGrupo" (data)="getSupervisor($event)" *ngIf="tablaPrinsipal"></app-modificar-grupo>
+     <app-modificar-grupo [idGrupo]="idGrupo" [tipo]="tipo" (data)="getSupervisor($event)" *ngIf="tablaPrinsipal"></app-modificar-grupo>
     </mat-card>
   </div>
 </div>

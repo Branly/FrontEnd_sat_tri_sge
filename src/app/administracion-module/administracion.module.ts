@@ -19,6 +19,7 @@ import { GestionGruposComponent } from './componentes-internos/gestion-grupos/ge
 import { CrearGrupoComponent } from './componentes-internos/gestion-grupos/crear-grupo/crear-grupo.component';
 import { ModificarGrupoComponent } from './componentes-internos/gestion-grupos/modificar-grupo/modificar-grupo.component';
 import { ProfesionalGrupoComponent } from './componentes-internos/gestion-grupos/profesional-grupo/profesional-grupo.component';
+import { CrearSupervisorComponent } from './componentes-internos/gestion-grupos/crear-supervisor/crear-supervisor.component';
 
 
 
@@ -39,7 +40,8 @@ import { ProfesionalGrupoComponent } from './componentes-internos/gestion-grupos
         GestionGruposComponent,
         CrearGrupoComponent,
         ModificarGrupoComponent,
-        ProfesionalGrupoComponent
+        ProfesionalGrupoComponent,
+        CrearSupervisorComponent
     ],
     imports: [
         CommonModule,

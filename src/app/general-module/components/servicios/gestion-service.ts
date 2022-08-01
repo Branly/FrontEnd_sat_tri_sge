@@ -1,6 +1,6 @@
 import { Professional } from './../interfaces/coordinador';
 import { Data } from './../interfaces/centralizador';
-import { Group, CreateGroup, Collaborator } from './../interfaces/gestion';
+import { Group, CreateGroup, Collaborator, CreateSupervisor } from './../interfaces/gestion';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
@@ -38,6 +38,10 @@ import { GeneralService } from './general.service';
 
     getProfessionalGroup(nit:String): Observable<Collaborator[]>{
       return this.serviceGestion.getData<Collaborator[]>(environment.API_IFI_SIPF,`colaborators/professionalGroup/${nit}`);
+    }
+
+    newSupervisor(group: CreateSupervisor): Observable<CreateSupervisor>{
+      return this.serviceGestion.postData<CreateSupervisor, CreateSupervisor>(environment.API_IFI_SIPF+`/WorkGroup/Group/Member`,group);
     }
 
   }

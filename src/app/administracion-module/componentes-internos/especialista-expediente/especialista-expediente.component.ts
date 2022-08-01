@@ -15,6 +15,7 @@ export class EspecialistaExpedienteComponent implements OnInit {
   mostrarTablaAgenda: Boolean = false;
   mostrarTablaExpedientes: Boolean = false;
   noFile: String = '';
+  agenda: String = "";
   displayedColumns: string[] = [
     'noexpedientetributa',
     'nombrecontribuyente',
@@ -128,6 +129,7 @@ export class EspecialistaExpedienteComponent implements OnInit {
   }
 
   diaryFile(agenda: String){
+    this.agenda = agenda;
     console.log(agenda);
       this.especialistaService.getDiaryFile(agenda).toPromise().then(res => {
       console.log(res);

@@ -18,6 +18,7 @@ export class GestionGruposComponent implements OnInit {
   }
   tablaPrinsipal: Boolean = false;
   idGrupo: Number = 0;
+  tipo: String = "";
   constructor (
     private gestionService: GestionService,
     public dialog: MatDialog
@@ -51,8 +52,9 @@ export class GestionGruposComponent implements OnInit {
       .then(res => this.group())
   }
 
-  showSupervisor (id: Number) {
+  showSupervisor (id: Number, tipo:String) {
     this.idGrupo = id
+    this.tipo = tipo;
     this.tablaPrinsipal = !this.tablaPrinsipal
   }
   getSupervisor(tabla:any){

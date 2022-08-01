@@ -16,6 +16,7 @@ export class ProfesionalGrupoComponent implements OnInit {
   }
   @Input() NitSupervisor: String = '';
   @Input() nombre: String = '';
+  @Input() igGrupo: Number = 0;
   @Output() public data = new EventEmitter<any>();
   tabla:Boolean = false;
   constructor (private gestionService: GestionService) {}

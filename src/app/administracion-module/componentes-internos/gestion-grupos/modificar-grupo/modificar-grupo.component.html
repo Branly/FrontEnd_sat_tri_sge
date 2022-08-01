@@ -1,6 +1,16 @@
 <ng-container *ngIf="!tableProfessional">
-  <br>
+  <br />
   <mat-card-title class="main-title">Modificar Grupo</mat-card-title>
+  <button
+    mat-button
+    type="button"
+    class="btn-container mt-3 mb-2"
+    color="primary"
+    (click)="newSupervisor()"
+  >
+    <mat-icon>add</mat-icon>
+    Agregar Supervisor
+  </button>
   <table
     mat-table
     [dataSource]="dataSource"
@@ -48,18 +58,13 @@
             type="button"
             title="request"
             color="primary"
-            (click)="showProfessional(element.nit, element.nombre )"
+            (click)="showProfessional(element.nit, element.nombre)"
           >
             <mat-icon class="iconos">request</mat-icon>
             <span> Modificar Profesional </span>
           </button>
 
-          <button
-            mat-menu-item
-            type="button"
-            title="request"
-            color="primary"
-          >
+          <button mat-menu-item type="button" title="request" color="primary">
             <mat-icon class="iconos">request</mat-icon>
             <span> Eliminar </span>
           </button>
@@ -85,5 +90,11 @@
   </mat-dialog-actions>
 </ng-container>
 
-<app-profesional-grupo *ngIf="tableProfessional" [NitSupervisor]="nitSupervisor" [nombre]="nombre" (data)="getProffesional($event)">
+<app-profesional-grupo
+  *ngIf="tableProfessional"
+  [NitSupervisor]="nitSupervisor"
+  [nombre]="nombre"
+  [igGrupo]="idGrupo"
+  (data)="getProffesional($event)"
+>
 </app-profesional-grupo>

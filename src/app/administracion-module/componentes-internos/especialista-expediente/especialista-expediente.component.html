@@ -1,8 +1,8 @@
 <div class="my-2 my-sm-3 my-md-4 my-lg-5 mx-2 mx-sm-3 mx-md-4 mx-lg-5">
-  <mat-card-title class="mt-2 main-title">Expedientes Asignados</mat-card-title>
   <div><br>
     <mat-card>
       <ng-container *ngIf="!mostrarTablaPadre && !mostrarTablaAgenda && !mostrarTablaExpedientes">
+        <mat-card-title class="mt-2 main-title">Expedientes Asignados</mat-card-title>
         <mat-form-field appearance="standard">
           <mat-label>Filtro</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="">
@@ -111,6 +111,8 @@
       <!--Muestra la tabla de agendas -->
 
       <ng-container *ngIf="mostrarTablaAgenda && !mostrarTablaExpedientes">
+        <mat-card-title class="mt-2 main-title">Agendas Asignados</mat-card-title>
+        <br>
         <mat-form-field appearance="standard">
           <mat-label>Filtro</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="">
@@ -164,6 +166,8 @@
 
       <!-- Muestra los Expedientes asignados a una agenda -->
       <ng-container *ngIf="mostrarTablaExpedientes">
+        <mat-card-title class="mt-2 main-title">{{agenda}}</mat-card-title>
+        <br>
         <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
 
           <ng-container matColumnDef="noexpedientetributa">

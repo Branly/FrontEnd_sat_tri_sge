@@ -48,7 +48,8 @@ export class CrearGrupoComponent implements OnInit {
   }
 
   getSpecialist(tipo: Number){
-    this.gestionService.getCollaborator(21, tipo).toPromise().then(
+    console.log(tipo);
+    this.gestionService.getCollaborator(7, tipo).toPromise().then(
       res => this.specialist = res
     )
   }

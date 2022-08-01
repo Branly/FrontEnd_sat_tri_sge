@@ -1,3 +1,5 @@
+import { CrearSupervisorComponent } from './../crear-supervisor/crear-supervisor.component';
+import { MatDialog } from '@angular/material/dialog';
 import { GestionService } from './../../../../general-module/components/servicios/gestion-service'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatTableDataSource } from '@angular/material/table'
@@ -15,10 +17,12 @@ export class ModificarGrupoComponent implements OnInit {
   @ViewChild('MatPaginator1') set matPaginator (mp1: MatPaginator) {
     this.dataSource.paginator = mp1
   }
-  @Input() igGrupo: Number = 0
+  @Input() idGrupo: Number = 0
+  @Input() tipo: String = "";
   @Output() public data = new EventEmitter<any>();
   tableProfessional: Boolean = false;
-  constructor (private gestionService: GestionService) {}
+  constructor (private gestionService: GestionService,
+    public dialog: MatDialog) {}
   nitSupervisor:String ="";
   nombre:String ="";
   ngOnInit (): void {
@@ -27,7 +31,7 @@ export class ModificarGrupoComponent implements OnInit {
 
   gerSupervisor () {
     this.gestionService
-      .getSupervisorGroup(this.igGrupo)
+      .getSupervisorGroup(this.idGrupo)
       .toPromise()
       .then(
         res => this.dataSource.data = res
@@ -47,5 +51,21 @@ export class ModificarGrupoComponent implements OnInit {
   getProffesional(tabla:any){
     console.log(tabla);
     this.tableProfessional = tabla.dato;
+  }
+
+  newSupervisor(){
+    const dialogRef = this.dialog
+    .open(CrearSupervisorComponent, {
+      /* width: 'auto',
+    height: 'auto', */
+    data: {
+      typeTribunal: this.tipo,
+      id:this.idGrupo
+    },
+      disableClose: true
+    })
+    .afterClosed()
+    .toPromise()
+    .then(res => this.gerSupervisor())
   }
 }

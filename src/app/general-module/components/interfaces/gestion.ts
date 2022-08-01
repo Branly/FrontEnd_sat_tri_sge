@@ -21,3 +21,12 @@ export interface Collaborator{
   estado:String,
   puesto:String
 }
+
+export interface CreateSupervisor{
+    fechaModifica: Date,
+    idGrupo: Number,
+    ipModifica: String,
+    nitProfesional: String,
+    nitSupervisor: String,
+    usuarioModifica: String
+}
