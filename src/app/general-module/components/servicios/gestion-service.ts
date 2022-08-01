@@ -1,6 +1,6 @@
 import { Professional } from './../interfaces/coordinador';
 import { Data } from './../interfaces/centralizador';
-import { Group, CreateGroup, Collaborator, CreateSupervisor } from './../interfaces/gestion';
+import { Group, CreateGroup, Collaborator, CreateSupervisor, DeleteProfessional } from './../interfaces/gestion';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
@@ -44,4 +44,15 @@ import { GeneralService } from './general.service';
       return this.serviceGestion.postData<CreateSupervisor, CreateSupervisor>(environment.API_IFI_SIPF+`/WorkGroup/Group/Member`,group);
     }
 
+    deleteWorkGroup(id: number): Observable<Object> {
+      return this.serviceGestion.deleteData<Object>(`${environment.API_IFI_SIPF}/WorkGroup/Delete/${id}`);
+    }
+
+    deleteProfessional(nit:String, grupo:Number): Observable<Object> {
+      return this.serviceGestion.deleteData<Object>(`${environment.API_IFI_SIPF}/WorkGroup/Delete/Member/${nit}/${grupo}`);
+    }
+
+    deleteSupervisor(nit:String, grupo:Number): Observable<Object> {
+      return this.serviceGestion.deleteData<Object>(`${environment.API_IFI_SIPF}/WorkGroup/Delete/Supervisor/${nit}/${grupo}`);
+    }
   }

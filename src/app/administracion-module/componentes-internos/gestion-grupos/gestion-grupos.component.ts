@@ -59,7 +59,13 @@ export class GestionGruposComponent implements OnInit {
   }
   getSupervisor(tabla:any){
     console.log(tabla);
+    this.group();
     this.tablaPrinsipal = tabla.dato;
+  }
+
+  deleteWorkGroup(id:number){
+    console.log(id);
+    this.gestionService.deleteWorkGroup(id).toPromise().then(res => this.group());
   }
 
 }

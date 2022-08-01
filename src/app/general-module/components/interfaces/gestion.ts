@@ -30,3 +30,12 @@ export interface CreateSupervisor{
     nitSupervisor: String,
     usuarioModifica: String
 }
+
+export interface DeleteProfessional{
+    fechaModifica: Date,
+    idGrupo: Number,
+    ipModifica: String,
+    nitProfecional: String,
+    nitSupervisor: String,
+    usuarioModifica: String
+}

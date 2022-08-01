@@ -1,10 +1,7 @@
 <mat-card-title class="main-title">Modificar Profesional</mat-card-title>
 <br>
 <mat-card-title class="main-title">{{nombre}}</mat-card-title>
-<button mat-button type="button" class="btn-container mt-3 mb-2" color="primary">
-  <mat-icon>add</mat-icon>
-  Agregar Profesional
-</button>
+
 <ng-container>
   <table
     mat-table
@@ -53,6 +50,7 @@
             type="button"
             title="request"
             color="primary"
+            (click)="delete(element.nit)"
           >
             <mat-icon class="iconos">request</mat-icon>
             <span> Eliminar </span>

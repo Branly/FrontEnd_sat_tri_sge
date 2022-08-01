@@ -64,7 +64,13 @@
             <span> Modificar Profesional </span>
           </button>
 
-          <button mat-menu-item type="button" title="request" color="primary">
+          <button
+            mat-menu-item
+            type="button"
+            title="request"
+            color="primary"
+            (click)="deleteSupervisor(element.nit)"
+          >
             <mat-icon class="iconos">request</mat-icon>
             <span> Eliminar </span>
           </button>
@@ -94,7 +100,7 @@
   *ngIf="tableProfessional"
   [NitSupervisor]="nitSupervisor"
   [nombre]="nombre"
-  [igGrupo]="idGrupo"
+  [idGrupo]="idGrupo"
   (data)="getProffesional($event)"
 >
 </app-profesional-grupo>
