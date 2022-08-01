@@ -1,0 +1,38 @@
+<h1 mat-dialog-title> Nueva Agenda</h1>
+<div mat-dialog-content>
+
+ <form [formGroup]="crearAgenda" class="crearExpediente">
+  <div class="row">
+    <div class="col-sm-6">
+    <p>No. Expediente</p>
+    <mat-form-field appearance="fill" class="tamaño">
+      <mat-label>No. Expediente</mat-label>
+      <input matInput formControlName="asuntoAgenda">
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-6">
+    <p>
+      Fecha de Interposicion
+    </p>
+    <mat-form-field appearance="fill" class="tamaño">
+      <input matInput [matDatepicker]="picker" formControlName="fecha">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick ()" >
+      <mat-icon>close</mat-icon>Cancelar
+    </button>
+    <button mat-button  cdkFocusInitial>
+      <mat-icon>save</mat-icon>Guardar
+    </button>
+  </mat-dialog-actions>
+ </form>
+
+
+
