@@ -46,7 +46,7 @@ export class AppComponent implements AfterViewInit, AfterContentChecked {
       },
       {
         id: 'AM07',
-        title: 'secretario',
+        title: 'Secretario',
         icon: "personal_injury",
         route: 'administracion/secretario'
       },
@@ -64,10 +64,11 @@ export class AppComponent implements AfterViewInit, AfterContentChecked {
       },
       {
         id: 'AM10',
-        title: 'prueba',
+        title: 'Centralizador Salida',
         icon: "personal_injury",
-        route: 'administracion/prueba'
+        route: 'administracion/centralizadorsalida'
       }
+      
     ]}
   ];
 
