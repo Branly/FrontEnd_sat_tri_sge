@@ -123,10 +123,11 @@ export class EspecialistaExpedienteComponent implements OnInit {
    */
   diary(){
     this.especialistaService.getDiary("87654321").toPromise().then(res => {
+    this.SecretarioService.getDiary(9).toPromise().then(res => {
       console.log(res);
       this.dataDiary.data = res;
     });
-  }
+  });
 
   diaryFile(agenda: String){
     this.agenda = agenda;

@@ -1,0 +1,97 @@
+<div class="my-2 my-sm-3 my-md-4 my-lg-5 mx-2 mx-sm-3 mx-md-4 mx-lg-5">
+  <mat-card-title class="mt-2 main-title">Resolucion de Expedientes</mat-card-title>
+  <div><br>
+  <mat-card>
+    <mat-form-field appearance="standard">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="">
+    </mat-form-field>
+      
+
+      <ng-container >
+        
+        <button mat-button type="button" class="btn-container mt-3 mb-2" color="primary" (click)="returnData()" >
+          <mat-icon>reply</mat-icon>
+          Regresar
+        </button>
+
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+              <ng-container matColumnDef="noexpediente">
+                  <th mat-header-cell *matHeaderCellDef> No. Expediente </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.no_expediente }}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="tiporecurso">
+                  <th mat-header-cell *matHeaderCellDef> Tipo de Recurso </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.tipo_recurso }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nombrecontribuyente">
+                <th mat-header-cell *matHeaderCellDef> Nombre Contribuyente </th>
+                <td mat-cell *matCellDef="let element"> {{ element.nombre }} </td>
+            </ng-container>
+
+              <ng-container matColumnDef="nit">
+                  <th mat-header-cell *matHeaderCellDef> NIT </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.nit_contribuyente }} </td>
+              </ng-container>
+
+              
+
+              <ng-container matColumnDef="fechatributa">
+                  <th mat-header-cell *matHeaderCellDef> Fecha Ingreso</th>
+                  <td mat-cell *matCellDef="let element"> {{ element.fecha_ingreso | date: 'dd/MM/yyyy' }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="gerenciaorigen">
+                  <th mat-header-cell *matHeaderCellDef> Gerencia Origen </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.gerencia_origen }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="resolucion">
+                  <th mat-header-cell *matHeaderCellDef> (Recurso)Resolucion </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.resolucion }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="monto">
+                  <th mat-header-cell *matHeaderCellDef> Monto </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.monto }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="proyectoresolucion">
+                  <th mat-header-cell *matHeaderCellDef> Proyecto Resolucion </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.proyectoresolucion}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="providencia">
+                  <th mat-header-cell *matHeaderCellDef> Providencia </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.providencia }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="acciones">
+                  <th mat-header-cell *matHeaderCellDef class="header-table"></th>
+                  <td mat-cell class="centrar" *matCellDef="let element">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Acciones">
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item type="button" title="request" color="primary" >
+                        <mat-icon class="iconos">request</mat-icon>
+                        <span>Certificar</span>
+                      </button>
+                      
+                    </mat-menu>
+                  </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator #MatPaginator1="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          aria-label="Select page of periodic elements">
+          </mat-paginator>
+      </ng-container>
+  </mat-card>
+  </div>
+</div>

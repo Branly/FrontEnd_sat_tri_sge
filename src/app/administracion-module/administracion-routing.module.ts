@@ -1,9 +1,11 @@
+import { AdministracionColaboradoresComponent } from './componentes-internos/administracion-colaboradores/administracion-colaboradores.component';
 import { EspecialistaExpedienteComponent } from './componentes-internos/especialista-expediente/especialista-expediente.component';
 import { SupervisorExpedienteComponent } from './componentes-internos/supervisor-expediente/supervisor-expediente.component';
 import { SecretarioAgendaComponent } from './componentes-internos/secretario-agenda/secretario-agenda.component';
 import { CoordinadorExpedienteComponent } from './componentes-internos/coordinador-expediente/coordinador-expediente.component';
 import { ProfesionalExpedienteComponent } from './componentes-internos/profesional-expediente/profesional-expediente.component';
 import { CentralizadorentradaExpedienteComponent } from './componentes-internos/centralizadorentrada-expediente/centralizadorentrada-expediente.component';
+import { CentralizadorsalidaExpedienteComponent } from './componentes-internos/centralizadorsalida-expediente/centralizadorsalida-expediente.component';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthorizationGuard } from "../general-module/seguridad/guards/authorization.guard";
@@ -16,7 +18,7 @@ const routes: Routes = [
         path: '', canActivateChild: [AuthorizationGuard],
         children:
         [
-            { path: 'recepcion', component: RecepcionExpedienteComponent },
+            {path: 'recepcion', component: RecepcionExpedienteComponent },
             {path: 'centralizadorentrada', component: CentralizadorentradaExpedienteComponent },
             {path: 'presidente', component: PresidenteExpedienteComponent},
             {path: 'profesional', component: ProfesionalExpedienteComponent},
@@ -25,6 +27,9 @@ const routes: Routes = [
             {path: 'supervisor', component: SupervisorExpedienteComponent},
             {path: 'especialista', component: EspecialistaExpedienteComponent},
             {path: 'gestiongrupos', component: GestionGruposComponent}
+            {path: 'colaboradores', component: AdministracionColaboradoresComponent },
+            {path: 'centralizadorsalida', component: CentralizadorsalidaExpedienteComponent},
+
         ]
     },
 ];

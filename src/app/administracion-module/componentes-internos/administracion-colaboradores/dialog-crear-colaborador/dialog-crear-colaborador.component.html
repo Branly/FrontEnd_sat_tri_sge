@@ -1,0 +1,70 @@
+<h1 class="main-title">{{!mostrarFechas ? 'Actualizar Colaborador' : 'Crear Colaborador'}}</h1>
+<form [formGroup]="crearColab">
+    <div class="row">
+        <div class="col-sm-6">
+            <mat-form-field appearance="standard" class="tamaño">
+                <mat-label> NIT: </mat-label>
+                <input matInput placeholder="" formControlName="nit" (blur)="consultarColaboradorByNIT($event)"
+                [pattern]="mobNumberPattern" autocomplete="off" onpaste="return false">
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-6">
+            <mat-form-field appearance="standard" class="tamaño">
+                <mat-label> Nombre: </mat-label>
+                <input matInput formControlName="nombre" readonly>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-6">
+            <mat-form-field appearance="standard" class="tamaño">
+                <mat-label> Tipo Tributa: </mat-label>
+                <input matInput formControlName="tipo_tributa" readonly>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-6">
+            <mat-form-field appearance="standard" class="tamaño">
+                <mat-label> Puesto de Trabajo: </mat-label>
+                <input matInput formControlName="puesto"  >
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-6">
+            <mat-form-field appearance="legacy" class="tamaño margin">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="estado">
+                    <mat-option *ngFor="let estado of estadoColaborador" [value]="estado.value">
+                        {{estado.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-6">
+            <mat-form-field appearance="standard" class="tamaño">
+                <mat-label> Correo Electronico: </mat-label>
+                <input matInput formControlName="correo" >
+            </mat-form-field>
+        </div>
+    </div>
+</form>
+
+<div class="col-12">
+    <br>
+    <mat-divider></mat-divider>
+</div>
+
+<mat-dialog-actions align="end">
+    <button mat-button class="btn-container" color="primary"
+         *ngIf="!mostrarFechas">
+        <mat-icon>refresh</mat-icon>Actualizar
+    </button>
+    <button mat-button color="warn" mat-dialog-close class="btn-container" (click)="cancelar()" [mat-dialog-close]>
+        <mat-icon>close</mat-icon>Cancelar
+    </button>
+<!--     <button mat-button [disabled]="crearColab.invalid" class="btn-container" color="primary"
+        (click)="guardarColaborador(crearColab.value)">
+        <mat-icon>save</mat-icon>Guardar
+    </button> -->
+</mat-dialog-actions>

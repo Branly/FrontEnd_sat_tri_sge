@@ -1,3 +1,4 @@
+import { EmpleadoProsis } from './../interfaces/empleado-prosis.interface';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -35,4 +36,9 @@ export class UserService {
   getUserRoles(type: string, login?: string): Observable<UserRole[]> {
     return this.generalServices.getData<UserRole[]>(`${this.API_SIPF}/roles/${type}`, login ? [{ login }] : []);
   }
+
+  obtenerInfoGeneralByNIT(nit: string): Observable<EmpleadoProsis> {
+    return this.generalServices.getData<EmpleadoProsis>(`${this.API_RUF}/empleados/consulta/prosis/nit`, nit);
+  }
+
 }

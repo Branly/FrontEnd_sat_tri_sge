@@ -15,12 +15,21 @@ import { ProfesionalExpedienteComponent } from './componentes-internos/profesion
 import { CoordinadorExpedienteComponent } from './componentes-internos/coordinador-expediente/coordinador-expediente.component';
 import { CrearExpedienteComponent } from './componentes-internos/crear-expediente/crear-expediente.component';
 import { PrestamoExpedienteComponent } from './componentes-internos/prestamo-expediente/prestamo-expediente.component';
-import { SecretarioAgendaComponent } from './componentes-internos/secretario-agenda/secretario-agenda.component';
 import { ListaColaboradorComponent } from './componentes-internos/lista-colaborador/lista-colaborador.component';
 import { ComentarioProvidenciaComponent } from './componentes-internos/comentario-providencia/comentario-providencia.component';
 import { SupervisorExpedienteComponent } from './componentes-internos/supervisor-expediente/supervisor-expediente.component';
 import { EspecialistaExpedienteComponent } from './componentes-internos/especialista-expediente/especialista-expediente.component';
-
+import { SecretarioAgendaComponent } from './componentes-internos/secretario-agenda/secretario-agenda.component';
+import { CrearAgendaComponent } from './componentes-internos/secretario-agenda/crear-agenda/crear-agenda.component';
+import { ResolucionExpedienteComponent } from './componentes-internos/secretario-agenda/resolucion-expediente/resolucion-expediente.component';
+import { ArchivosAgendaComponent } from './componentes-internos/secretario-agenda/archivos-agenda/archivos-agenda.component';
+import { CentralizadorsalidaExpedienteComponent } from './componentes-internos/centralizadorsalida-expediente/centralizadorsalida-expediente.component';
+import { AdjuntarCedulaComponent } from './componentes-internos/centralizadorsalida-expediente/adjuntar-cedula/adjuntar-cedula.component';
+import { CrearProvidenciasalidaComponent } from './componentes-internos/centralizadorsalida-expediente/crear-providenciasalida/crear-providenciasalida.component';
+import { AdjuntarProvidenciasalidaComponent } from './componentes-internos/centralizadorsalida-expediente/adjuntar-providenciasalida/adjuntar-providenciasalida.component';
+import { ModificarGerenciaComponent } from './componentes-internos/centralizadorsalida-expediente/modificar-gerencia/modificar-gerencia.component';
+import { AdministracionColaboradoresComponent } from './componentes-internos/administracion-colaboradores/administracion-colaboradores.component';
+import { DialogCrearColaboradorComponent } from './componentes-internos/administracion-colaboradores/dialog-crear-colaborador/dialog-crear-colaborador.component';
 
 
 
@@ -43,6 +52,16 @@ import { EspecialistaExpedienteComponent } from './componentes-internos/especial
         ModificarGrupoComponent,
         ProfesionalGrupoComponent,
         CrearSupervisorComponent
+        CrearAgendaComponent, 
+        ResolucionExpedienteComponent,
+        ArchivosAgendaComponent,
+        CentralizadorsalidaExpedienteComponent,
+        AdjuntarCedulaComponent,
+        CrearProvidenciasalidaComponent,
+        AdjuntarProvidenciasalidaComponent,
+        ModificarGerenciaComponent,
+        AdministracionColaboradoresComponent,
+        DialogCrearColaboradorComponent,
     ],
     imports: [
         CommonModule,
