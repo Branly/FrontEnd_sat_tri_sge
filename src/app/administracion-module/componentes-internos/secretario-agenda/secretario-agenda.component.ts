@@ -9,6 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { RecepcionService } from './../../../general-module/components/servicios/recepcion-service';
 import { formatDate } from '@angular/common';
 import * as moment from 'moment';
+import {
+  Expedient,
+  InformationExpedient
+} from './../../../general-module/components/interfaces/Recepcion'
 
 
 
@@ -19,8 +23,37 @@ import * as moment from 'moment';
 })
 export class SecretarioAgendaComponent implements OnInit {
 
+  file: InformationExpedient = {
+    impuesto: '',
+    estado: '',
+    folios: 5,
+    fecha_ingreso: new Date(),
+    observacion: '',
+    especialista: '',
+    tipo_caso: '',
+    tipo_recurso: '',
+    profesional: '',
+    recurso: '',
+    no_expediente: '',
+    id_agenda: '',
+    nit_contribuyente: '',
+    gerencia_origen: '',
+    cantidad_ajustes: 0,
+    fecha_preincripcion: new Date(),
+    direccion_fiscal: '',
+    fecha_interposicion: new Date(),
+    subTipo_caso: '',
+    no_expediente_tributa: '',
+    idCasoEspecial: 0,
+    monto: 0,
+    nombre: ''
+  }
+
+  info: Expedient[] = []
+
   noAgenda: string | undefined;
   asunto: number | undefined;
+  fechaIngreso: Date | undefined;
 
   noExpediente: string | undefined;
   tipoRecurso: number | undefined;
@@ -46,14 +79,14 @@ export class SecretarioAgendaComponent implements OnInit {
     'profesional',
     'acciones'
   ];
-
+ 
   dataSource = new MatTableDataSource();
   dataSource2 = new MatTableDataSource();
   mostrarTablaPadre: boolean = false;
   mostrarTablaPendiente: boolean = false;
   mostrarTablaResolucion: boolean = false;
-  file: import("c:/Users/Anderson/Desktop/SGE-TRIBUTA/FrontEnd_sat_tri_sge/src/app/general-module/components/interfaces/Secretario").Diary[] | undefined;
-
+/*   file: import("c:/Users/Anderson/Desktop/SGE-TRIBUTA/FrontEnd_sat_tri_sge/src/app/general-module/components/interfaces/Secretario").Diary[] | undefined;
+ */
   @ViewChild('MatPaginator1') set matPaginator(mp1: MatPaginator) {
     this.dataSource.paginator = mp1;
     this.dataSource2.paginator = mp1;
@@ -82,12 +115,10 @@ export class SecretarioAgendaComponent implements OnInit {
    * @author  (Anderson Suruy)
    * @since 26/07/2022
    */
-  newFile(): void {
+  newDiary(): void {
     const dialogRef = this.dialog.open(CrearAgendaComponent, {
-      /* width: 'auto',
-      height: 'auto', */
       disableClose: true,
-      data: {noAgenda: this.noAgenda,
+      data: {fechaIngreso: this.fechaIngreso,
             asunto: this.asunto
             }
     }).afterClosed().toPromise().then(res => this.diary()); 
@@ -96,6 +127,7 @@ export class SecretarioAgendaComponent implements OnInit {
 
   ngOnInit(): void {
     this.diary();
+    this.Expedient();
   }
  
 
@@ -129,7 +161,7 @@ export class SecretarioAgendaComponent implements OnInit {
     this.mostrarTablaPadre = !this.mostrarTablaPadre
   }
   
-
+ 
 
    /* agendaInfo (noAgenda: String) {
     this.SecretarioService.getDiary(noAgenda)
@@ -142,14 +174,19 @@ export class SecretarioAgendaComponent implements OnInit {
       })
   }  */
  
-
-
-
    diary(){
-    this.SecretarioService.getDiary().toPromise().then(res => {
+    this.SecretarioService.getDiary(9).toPromise().then(res => {
       console.log(res);
       this.dataSource.data = res;
     })
+  }
+
+  Expedient () {
+    this.SecretarioService.getExpendient('87654321')
+      .toPromise()
+      .then(res => {
+        this.dataSource2.data = res
+      })
   }
  
   public applyFilter(event: Event) {
