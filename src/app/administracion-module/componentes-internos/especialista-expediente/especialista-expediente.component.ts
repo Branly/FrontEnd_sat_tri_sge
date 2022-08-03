@@ -108,7 +108,7 @@ export class EspecialistaExpedienteComponent implements OnInit {
    * @since 25/07/2022
    */
   diary(){
-    this.SecretarioService.getDiary().toPromise().then(res => {
+    this.SecretarioService.getDiary(9).toPromise().then(res => {
       console.log(res);
       this.dataDiary.data = res;
 
