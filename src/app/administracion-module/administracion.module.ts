@@ -27,6 +27,8 @@ import { AdjuntarProvidenciasalidaComponent } from './componentes-internos/centr
 import { ModificarGerenciaComponent } from './componentes-internos/centralizadorsalida-expediente/modificar-gerencia/modificar-gerencia.component';
 
 import { PruebaComponent } from './componentes-internos/prueba/prueba.component';
+import { AdministracionColaboradoresComponent } from './componentes-internos/administracion-colaboradores/administracion-colaboradores.component';
+import { DialogCrearColaboradorComponent } from './componentes-internos/administracion-colaboradores/dialog-crear-colaborador/dialog-crear-colaborador.component';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { PruebaComponent } from './componentes-internos/prueba/prueba.component'
         AdjuntarProvidenciasalidaComponent,
         ModificarGerenciaComponent,
         PruebaComponent,
+        AdministracionColaboradoresComponent,
+        DialogCrearColaboradorComponent,
     ],
     imports: [
         CommonModule,

@@ -1,3 +1,4 @@
+import { AdministracionColaboradoresComponent } from './componentes-internos/administracion-colaboradores/administracion-colaboradores.component';
 import { PruebaComponent } from './componentes-internos/prueba/prueba.component';
 import { EspecialistaExpedienteComponent } from './componentes-internos/especialista-expediente/especialista-expediente.component';
 import { SupervisorExpedienteComponent } from './componentes-internos/supervisor-expediente/supervisor-expediente.component';
@@ -17,7 +18,7 @@ const routes: Routes = [
         path: '', canActivateChild: [AuthorizationGuard],
         children:
         [
-            { path: 'recepcion', component: RecepcionExpedienteComponent },
+            {path: 'recepcion', component: RecepcionExpedienteComponent },
             {path: 'centralizadorentrada', component: CentralizadorentradaExpedienteComponent },
             {path: 'presidente', component: PresidenteExpedienteComponent},
             {path: 'profesional', component: ProfesionalExpedienteComponent},
@@ -25,8 +26,10 @@ const routes: Routes = [
             {path: 'secretario', component: SecretarioAgendaComponent},
             {path: 'supervisor', component: SupervisorExpedienteComponent},
             {path: 'especialista', component: EspecialistaExpedienteComponent},
+            {path: 'colaboradores', component: AdministracionColaboradoresComponent },
             {path: 'centralizadorsalida', component: CentralizadorsalidaExpedienteComponent},
-            {path: 'prueba', component: PruebaComponent}
+
+
         ]
     },
 ];

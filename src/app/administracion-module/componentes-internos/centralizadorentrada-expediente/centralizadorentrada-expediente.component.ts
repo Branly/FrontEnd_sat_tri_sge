@@ -122,7 +122,7 @@ export class CentralizadorentradaExpedienteComponent implements OnInit {
   }
 
   Expedient () {
-    this.CentralizadorService.getExpendient('87634457')
+    this.CentralizadorService.getExpendient('83900764')
       .toPromise()
       .then(res => {
         this.dataSource.data = res

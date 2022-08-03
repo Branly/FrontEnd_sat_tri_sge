@@ -63,12 +63,11 @@ export class AppComponent implements AfterViewInit, AfterContentChecked {
         route: 'administracion/especialista'
       },
       {
-        id: 'AM10',
-        title: 'Centralizador Salida',
+        id: 'AM11',
+        title: 'colaboradores',
         icon: "personal_injury",
-        route: 'administracion/centralizadorsalida'
-      }
-      
+        route: 'administracion/colaboradores'
+      }      
     ]}
   ];
 
