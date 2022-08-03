@@ -6,6 +6,7 @@ import { SecretarioAgendaComponent } from './componentes-internos/secretario-age
 import { CoordinadorExpedienteComponent } from './componentes-internos/coordinador-expediente/coordinador-expediente.component';
 import { ProfesionalExpedienteComponent } from './componentes-internos/profesional-expediente/profesional-expediente.component';
 import { CentralizadorentradaExpedienteComponent } from './componentes-internos/centralizadorentrada-expediente/centralizadorentrada-expediente.component';
+import { CentralizadorsalidaExpedienteComponent } from './componentes-internos/centralizadorsalida-expediente/centralizadorsalida-expediente.component';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthorizationGuard } from "../general-module/seguridad/guards/authorization.guard";
@@ -25,8 +26,10 @@ const routes: Routes = [
             {path: 'secretario', component: SecretarioAgendaComponent},
             {path: 'supervisor', component: SupervisorExpedienteComponent},
             {path: 'especialista', component: EspecialistaExpedienteComponent},
-            {path: 'prueba', component: PruebaComponent},
             {path: 'colaboradores', component: AdministracionColaboradoresComponent },
+            {path: 'centralizadorsalida', component: CentralizadorsalidaExpedienteComponent},
+
+
         ]
     },
 ];
