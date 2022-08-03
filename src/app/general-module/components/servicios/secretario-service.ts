@@ -16,10 +16,10 @@ import { Expedient} from './../interfaces/Recepcion';
         private serviceSecretario: GeneralService
     ){}
 
-    getDiary(tipo: number): Observable<Diary[]>{
-        return this.serviceSecretario.getData<Diary[]>(
-          environment.API_IFI_SIPF,
-          `Diary/${tipo}`);
+
+    getDiary(tipo: Number): Observable<Diary[]>{
+        return this.serviceSecretario.getData<Diary[]>(environment.API_IFI_SIPF,`Diary/${tipo}`);
+
     }
 
     getExpendient(nit:String): Observable<Expedient[]>{

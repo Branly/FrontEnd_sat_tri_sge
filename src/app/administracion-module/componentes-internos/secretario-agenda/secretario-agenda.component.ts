@@ -69,6 +69,10 @@ export class SecretarioAgendaComponent implements OnInit {
     'agenda', 'asunto', 'Fecha', 'acciones'
   ];
 
+  dataSource = new MatTableDataSource();
+  mostrarTablaPadre = false;
+
+
   displayedColumns2: string[] = [
     'noexpedientetributa',
     'nombrecontribuyente',
@@ -140,6 +144,7 @@ export class SecretarioAgendaComponent implements OnInit {
     this.mostrarTablaPadre = !this.mostrarTablaPadre
     this.mostrarTablaPendiente = !this.mostrarTablaPendiente
   }
+
 
     /**
    * @description Oculta la tabla con informacion de Agendas y muestra la informacion de la tabla Resolucion-Expediente

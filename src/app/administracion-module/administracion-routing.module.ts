@@ -1,5 +1,4 @@
 import { AdministracionColaboradoresComponent } from './componentes-internos/administracion-colaboradores/administracion-colaboradores.component';
-import { PruebaComponent } from './componentes-internos/prueba/prueba.component';
 import { EspecialistaExpedienteComponent } from './componentes-internos/especialista-expediente/especialista-expediente.component';
 import { SupervisorExpedienteComponent } from './componentes-internos/supervisor-expediente/supervisor-expediente.component';
 import { SecretarioAgendaComponent } from './componentes-internos/secretario-agenda/secretario-agenda.component';
@@ -12,6 +11,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthorizationGuard } from "../general-module/seguridad/guards/authorization.guard";
 import { RecepcionExpedienteComponent } from "./componentes-internos/recepcion-expediente/recepcion-expediente.component";
 import { PresidenteExpedienteComponent } from './componentes-internos/presidente-expediente/presidente-expediente.component';
+import { GestionGruposComponent } from './componentes-internos/gestion-grupos/gestion-grupos.component';
 
 const routes: Routes = [
     {
@@ -26,9 +26,9 @@ const routes: Routes = [
             {path: 'secretario', component: SecretarioAgendaComponent},
             {path: 'supervisor', component: SupervisorExpedienteComponent},
             {path: 'especialista', component: EspecialistaExpedienteComponent},
+            {path: 'gestiongrupos', component: GestionGruposComponent}
             {path: 'colaboradores', component: AdministracionColaboradoresComponent },
             {path: 'centralizadorsalida', component: CentralizadorsalidaExpedienteComponent},
-
 
         ]
     },

@@ -1,0 +1,18 @@
+.tamaño {
+  width: auto;
+  height: auto;
+}
+
+.supervisor{
+  height: 130px;
+  width: 550px;
+}
+
+
+.readonly-wrapper {
+cursor: not-allowed;
+}
+
+.readonly-wrapper .readonly-block {
+pointer-events: none;
+}

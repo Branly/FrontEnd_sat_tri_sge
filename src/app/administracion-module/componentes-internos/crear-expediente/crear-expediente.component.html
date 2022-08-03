@@ -3,6 +3,13 @@
 
  <form [formGroup]="crearExp" class="crearExpediente">
   <div class="row">
+
+
+<!--       <div class="col-sm-4"*ngIf="rechazo">
+        </div>
+        <div class="col-sm-4"*ngIf="rechazo">
+        </div> -->
+
     <div class="col-sm-4">
     <p>No. Expediente</p>
     <mat-form-field appearance="fill" class="tamaño">
@@ -43,12 +50,24 @@
 
   <div class="col-sm-4">
     <p>Gerencia Origen</p>
+     <mat-form-field appearance="fill" class="tamaño">
+       <mat-label>Gerencia Origen</mat-label>
+       <mat-select formControlName="idGerenciaOrigen" name="fill">
+         <mat-option *ngFor="let recurso of management" [value]="recurso.codigo">
+           {{recurso.nombre}}
+         </mat-option>
+       </mat-select>
+     </mat-form-field>
+    </div>
+
+<!--   <div class="col-sm-4">
+    <p>Gerencia Origen</p>
     <mat-select (selectionChange)="saveManagement($event)" name="fill" >
       <mat-option *ngFor="let recurso of management" [value]="recurso.codigo" [id]="recurso.nombre">
         {{recurso.nombre}}
       </mat-option>
     </mat-select>
-  </div>
+  </div> -->
 
   <div class="col-sm-4">
     <p>Folios</p>
@@ -82,6 +101,17 @@
     </mat-form-field>
   </div>
   </div>
+  <div *ngIf="rechazo">
+    <p>Tipo de Recurso</p>
+     <mat-form-field appearance="fill" class="Observation">
+       <mat-label>Tipo de Recurso</mat-label>
+       <mat-select formControlName="tipoRecurso" name="fill">
+         <mat-option *ngFor="let recurso of observation" [value]="recurso.codigo">
+           {{recurso.nombre}}
+         </mat-option>
+       </mat-select>
+     </mat-form-field>
+    </div>
   <mat-dialog-actions align="end">
     <button mat-button (click)="onNoClick()">
       <mat-icon>close</mat-icon>Cancelar
@@ -89,7 +119,7 @@
     <button mat-button  cdkFocusInitial (click)="createExpedient()">
       <mat-icon>save</mat-icon>Guardar
     </button>
-    <button mat-button (click)="getRejection()">
+    <button mat-button (click)="showObservation()">
       <mat-icon>report_problem</mat-icon>Rechazar
     </button>
   </mat-dialog-actions>

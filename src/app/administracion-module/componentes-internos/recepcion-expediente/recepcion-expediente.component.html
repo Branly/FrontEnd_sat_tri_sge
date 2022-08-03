@@ -86,10 +86,11 @@
                           <mat-icon class="iconos">request</mat-icon>
                           <span>Solicitud de Préstamo</span>
                         </button>
-                        <button mat-menu-item type="button" title="annexes" color="warn">
+                        <button mat-menu-item type="button" title="annexes" color="warn" (click)="fileInput.click()">
                           <mat-icon class="iconos">annexes</mat-icon>
                           <span>Anexo</span>
                         </button>
+                        <input #fileInput type="file" hidden multiple />
                       </mat-menu>
                     </td>
                 </ng-container>
