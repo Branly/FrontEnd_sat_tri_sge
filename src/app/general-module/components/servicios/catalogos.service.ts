@@ -14,7 +14,7 @@ export class CatalogosService {
     }
 
     getCatalogDataByIdCatalog(tipo: number): Observable<Catalog[]> {
-        return this.generalService.getData<Catalog[]>(environment.API_IFI_SIPF,`CatData/${tipo}`);
+        return this.generalService.getData<Catalog[]>(environment.API_SGE_TRI,`CatData/${tipo}`);
       }
 
 }

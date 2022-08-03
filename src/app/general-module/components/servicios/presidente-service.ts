@@ -14,7 +14,7 @@ import { GeneralService } from './general.service';
     ){}
 
     getExpendient(): Observable<Expedient[]>{
-        return this.servicePresidente.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Tributario`);
+        return this.servicePresidente.getData<Expedient[]>(environment.API_SGE_TRI,`Files/Tributario`);
     }
 
   }

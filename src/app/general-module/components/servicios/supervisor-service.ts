@@ -11,14 +11,11 @@ export class SupervisorService {
   constructor (private ServiceSupervisor: GeneralService) {}
 
   setStateSpecialistReview (noFile: String): Observable<String> {
-    return this.ServiceSupervisor.putData<String, String>(
-      environment.API_IFI_SIPF,
-      `Files/StateSpecialistReview/${noFile}`
-    )
+    return this.ServiceSupervisor.putData<String, String>(environment.API_SGE_TRI,`Files/StateSpecialistReview/${noFile}`);
   }
 
   setStateProfessionalCorrection (file:String): Observable<String>{
-    return this.ServiceSupervisor.putData<String, String>(environment.API_IFI_SIPF,`Files/StateProfessionalCorrection/${file}`)
+    return this.ServiceSupervisor.putData<String, String>(environment.API_SGE_TRI,`Files/StateProfessionalCorrection/${file}`);
   }
 
 }

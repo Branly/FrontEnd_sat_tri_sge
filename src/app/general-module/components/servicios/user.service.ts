@@ -13,7 +13,7 @@ export class UserService {
   API_GENERAL = environment.API_GENERAL;
   API_RTU = environment.API_RTU;
   API_RUF = environment.API_RUF;
-  API_SIPF = environment.API_IFI_SIPF;
+  API_SGET = environment.API_SGE_TRI;
 
   constructor(private generalServices: GeneralService) { }
 
@@ -21,7 +21,7 @@ export class UserService {
     if (sessionStorage.getItem('userLogged')) {
       return of(JSON.parse(sessionStorage.getItem('userLogged')!));
     }
-    return this.generalServices.getData<UserLogged>(`${this.API_SIPF}/users/logged`).pipe(
+    return this.generalServices.getData<UserLogged>(`${this.API_SGET}/users/logged`).pipe(
       map(user => {
         sessionStorage.setItem('userLogged', JSON.stringify(user));
         return user;
@@ -30,11 +30,11 @@ export class UserService {
   }
 
   getUserInfo(id: string): Observable<User> {
-    return this.generalServices.getData<User>(`${this.API_SIPF}/users/${id}`);
+    return this.generalServices.getData<User>(`${this.API_SGET}/users/${id}`);
   }
 
   getUserRoles(type: string, login?: string): Observable<UserRole[]> {
-    return this.generalServices.getData<UserRole[]>(`${this.API_SIPF}/roles/${type}`, login ? [{ login }] : []);
+    return this.generalServices.getData<UserRole[]>(`${this.API_SGET}/roles/${type}`, login ? [{ login }] : []);
   }
 
   obtenerInfoGeneralByNIT(nit: string): Observable<EmpleadoProsis> {

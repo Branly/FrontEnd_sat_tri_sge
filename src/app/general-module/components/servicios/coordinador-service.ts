@@ -15,15 +15,15 @@ import { GeneralService } from './general.service';
     ){}
 
     getExpendient(): Observable<Expedient[]>{
-        return this.serviceCoordinador.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Coordinator`);
+        return this.serviceCoordinador.getData<Expedient[]>(environment.API_SGE_TRI,`Files/Coordinator`);
     }
 
     getProfessional(rol:Number, tipo:String): Observable<Professional[]>{
-      return this.serviceCoordinador.getData<Professional[]>(environment.API_IFI_SIPF,`colaborators/CollaboratorRole/${rol}/${tipo}`);
+      return this.serviceCoordinador.getData<Professional[]>(environment.API_SGE_TRI,`colaborators/CollaboratorRole/${rol}/${tipo}`);
     }
 
     setAssignment(nit:String, file:String): Observable<Professional>{
-      return this.serviceCoordinador.putData<Professional, Professional>(environment.API_IFI_SIPF,`/Files/manualAssignment/${file}/${nit}`)
+      return this.serviceCoordinador.putData<Professional, Professional>(environment.API_SGE_TRI,`/Files/manualAssignment/${file}/${nit}`)
     }
 
   }

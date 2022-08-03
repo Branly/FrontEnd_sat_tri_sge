@@ -10,7 +10,7 @@ export class DocumentosExpedienteService {
 
     getRejection(noExpediente: string){
         return this.serviceDocumentosExpediente.getData<Blob>(
-            environment.API_IFI_SIPF,`/documents/documentos/${noExpediente}`, {responseType: 'blob'}
+            environment.API_SGE_TRI,`/documents/documentos/${noExpediente}`, {responseType: 'blob'}
         )
     }
 

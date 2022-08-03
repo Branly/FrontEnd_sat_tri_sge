@@ -7,5 +7,5 @@ export const environment = {
   API_CATALOGO: "https://rtu.desa.sat.gob.gt/api/sat_catalogo",
   API_RUF: "https://rtu.desa.sat.gob.gt/api/sat_sge_ruf",
   API_URL_SEC: "https://rtu.desa.sat.gob.gt/api/sat-seguridad",
-  API_IFI_SIPF: "http://localhost:8080"
+  API_SGE_TRI: "http://localhost:8080"
 };

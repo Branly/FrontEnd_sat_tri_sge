@@ -15,27 +15,27 @@ import { GeneralService } from './general.service';
     ){}
 
     setStatePonent(file:String): Observable<String>{
-      return this.serviceEspecialista.putData<String, String>(environment.API_IFI_SIPF,`/Files/StatePonent/${file}`)
+      return this.serviceEspecialista.putData<String, String>(environment.API_SGE_TRI,`/Files/StatePonent/${file}`)
     }
 
     setStateSupervisorCorrection(file:String): Observable<String>{
-      return this.serviceEspecialista.putData<String, String>(environment.API_IFI_SIPF,`/Files/StateSupervisorCorrection/${file}`)
+      return this.serviceEspecialista.putData<String, String>(environment.API_SGE_TRI,`/Files/StateSupervisorCorrection/${file}`)
     }
 
     setStatePendingDiary(file:String): Observable<String>{
-      return this.serviceEspecialista.putData<String, String>(environment.API_IFI_SIPF,`/Files/StatePendingDiary/${file}`)
+      return this.serviceEspecialista.putData<String, String>(environment.API_SGE_TRI,`/Files/StatePendingDiary/${file}`)
     }
 
     setStateResolutionCreation(file:String): Observable<String>{
-      return this.serviceEspecialista.putData<String, String>(environment.API_IFI_SIPF,`/Files/StateResolutionCreation/${file}`)
+      return this.serviceEspecialista.putData<String, String>(environment.API_SGE_TRI,`/Files/StateResolutionCreation/${file}`)
     }
 
     getDiary(nit: String): Observable<Diary[]>{
-      return this.serviceEspecialista.getData<Diary[]>(environment.API_IFI_SIPF,`Diary/Specialist/${nit}`);
+      return this.serviceEspecialista.getData<Diary[]>(environment.API_SGE_TRI,`Diary/Specialist/${nit}`);
     }
 
     getDiaryFile(agenda: String): Observable<Expedient[]>{
-      return this.serviceEspecialista.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/DiaryFile/${agenda}`);
+      return this.serviceEspecialista.getData<Expedient[]>(environment.API_SGE_TRI,`Files/DiaryFile/${agenda}`);
     }
   }
 

@@ -13,36 +13,36 @@ export class RecepcionService {
 
   getExpendient (): Observable<Expedient[]> {
     return this.serviceRecepcion.getData<Expedient[]>(
-      environment.API_IFI_SIPF,
+      environment.API_SGE_TRI,
       `Files/Receptionist`
     )
   }
 
   setExpedient (newExpediente: createExpedient): Observable<createExpedient> {
     return this.serviceRecepcion.postData<createExpedient, Object>(
-      environment.API_IFI_SIPF + `/Files/File/`,
+      environment.API_SGE_TRI + `/Files/File/`,
       newExpediente
     )
   }
 
   setLoan (newLoan: Loan): Observable<Loan> {
     return this.serviceRecepcion.postData<Loan, Object>(
-      environment.API_IFI_SIPF + `/Files/Loan/`,
+      environment.API_SGE_TRI + `/Files/Loan/`,
       newLoan
     )
   }
 
   getType(tipo: Number): Observable<Data[]>{
-    return this.serviceRecepcion.getData<Data[]>(environment.API_IFI_SIPF,`CatData/${tipo}`);
+    return this.serviceRecepcion.getData<Data[]>(environment.API_SGE_TRI,`CatData/${tipo}`);
   }
 
   getObservation(): Observable<Data[]>{
-    return this.serviceRecepcion.getData<Data[]>(environment.API_IFI_SIPF,`CatData/Observation`);
+    return this.serviceRecepcion.getData<Data[]>(environment.API_SGE_TRI,`CatData/Observation`);
   }
 
 
   setState(file: String): Observable<String>{
-    return this.serviceRecepcion.putData<String, String>(environment.API_IFI_SIPF,`/Files/StateInformationComfirmation/${file}`)
+    return this.serviceRecepcion.putData<String, String>(environment.API_SGE_TRI,`/Files/StateInformationComfirmation/${file}`)
   }
 
 }

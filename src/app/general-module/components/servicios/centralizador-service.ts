@@ -15,19 +15,19 @@ import { GeneralService } from './general.service';
     ){}
 
     getExpendient(nit:String): Observable<Expedient[]>{
-        return this.serviceCentralizador.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Files/${nit}/7`);
+        return this.serviceCentralizador.getData<Expedient[]>(environment.API_SGE_TRI,`Files/Files/${nit}/7`);
     }
 
     getType(tipo: Number): Observable<Data[]>{
-      return this.serviceCentralizador.getData<Data[]>(environment.API_IFI_SIPF,`CatData/${tipo}`);
+      return this.serviceCentralizador.getData<Data[]>(environment.API_SGE_TRI,`CatData/${tipo}`);
     }
 
     getSubType(tipo: Number): Observable<Data[]>{
-      return this.serviceCentralizador.getData<Data[]>(environment.API_IFI_SIPF,`CatData/Sub/${tipo}`);
+      return this.serviceCentralizador.getData<Data[]>(environment.API_SGE_TRI,`CatData/Sub/${tipo}`);
     }
 
     getInformation(tipo: String): Observable<Expedient[]>{
-      return this.serviceCentralizador.getData<Expedient[]>(environment.API_IFI_SIPF,`Files/Verification/${tipo}`);
+      return this.serviceCentralizador.getData<Expedient[]>(environment.API_SGE_TRI,`Files/Verification/${tipo}`);
     }
 
     setImpost(idImpost:Number, monto:Number, file:String): Observable<Impost>{
@@ -39,15 +39,15 @@ import { GeneralService } from './general.service';
         noExpedienteTributa: file,
         usuarioModifica: "qq"
       }
-      return this.serviceCentralizador.postData<Impost, Impost>(environment.API_IFI_SIPF+`/Files/FileTax/`,newImpost)
+      return this.serviceCentralizador.postData<Impost, Impost>(environment.API_SGE_TRI+`/Files/FileTax/`,newImpost)
     }
 
     setComplement(newComplement:Complement): Observable<Complement>{
-      return this.serviceCentralizador.postData<Complement, Complement>(environment.API_IFI_SIPF+`/Files/Complemnt/`,newComplement)
+      return this.serviceCentralizador.postData<Complement, Complement>(environment.API_SGE_TRI+`/Files/Complemnt/`,newComplement)
     }
 
     setProfessional(file:String): Observable<String>{
-      return this.serviceCentralizador.putData<String, String>(environment.API_IFI_SIPF,`/Files/StatePendigAssignment/${file}`)
+      return this.serviceCentralizador.putData<String, String>(environment.API_SGE_TRI,`/Files/StatePendigAssignment/${file}`)
     }
 
   }
