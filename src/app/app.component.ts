@@ -70,7 +70,7 @@ export class AppComponent implements AfterViewInit, AfterContentChecked {
       },
       {
         id: 'AM11',
-        title: 'administracioncolaboradores',
+        title: 'colaboradores',
         icon: "personal_injury",
         route: 'administracion/colaboradores'
       }      
