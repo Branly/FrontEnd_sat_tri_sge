@@ -61,6 +61,14 @@ export class CentralizadorsalidaExpedienteComponent implements OnInit {
     })
   }
 
+  Expedient () {
+    this.CentralizadorService.getExpendient('87634457')
+      .toPromise()
+      .then(res => {
+        this.dataSource.data = res
+      })
+  }
+
   modGerencia(): void {
     const dialogRef = this.dialog.open(ModificarGerenciaComponent, {
       /* width: 'auto',
